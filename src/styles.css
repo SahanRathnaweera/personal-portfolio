@@ -62,26 +62,37 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.875rem;
+  --background: oklch(0.12 0.03 270);
+  --foreground: oklch(0.98 0.01 270);
+  --card: oklch(0.16 0.04 270);
+  --card-foreground: oklch(0.98 0.01 270);
+  --popover: oklch(0.16 0.04 270);
+  --popover-foreground: oklch(0.98 0.01 270);
+  --primary: oklch(0.72 0.22 320);
+  --primary-foreground: oklch(0.12 0.03 270);
+  --secondary: oklch(0.7 0.2 200);
+  --secondary-foreground: oklch(0.12 0.03 270);
+  --muted: oklch(0.22 0.04 270);
+  --muted-foreground: oklch(0.72 0.04 270);
+  --accent: oklch(0.78 0.2 150);
+  --accent-foreground: oklch(0.12 0.03 270);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.98 0.01 270);
+  --border: oklch(0.3 0.04 270 / 0.4);
+  --input: oklch(0.22 0.04 270);
+  --ring: oklch(0.72 0.22 320);
+
+  /* Brand gradients & glows */
+  --gradient-hero: linear-gradient(135deg, oklch(0.72 0.22 320), oklch(0.7 0.2 250), oklch(0.78 0.2 180));
+  --gradient-text: linear-gradient(135deg, #f472b6, #818cf8, #22d3ee);
+  --gradient-aurora: radial-gradient(at 20% 20%, oklch(0.72 0.22 320 / 0.45), transparent 50%),
+                     radial-gradient(at 80% 30%, oklch(0.7 0.2 200 / 0.4), transparent 50%),
+                     radial-gradient(at 50% 80%, oklch(0.78 0.2 150 / 0.35), transparent 55%);
+  --gradient-card: linear-gradient(145deg, oklch(0.2 0.05 270 / 0.7), oklch(0.16 0.04 280 / 0.4));
+  --shadow-glow: 0 20px 60px -10px oklch(0.72 0.22 320 / 0.5);
+  --shadow-3d: 0 30px 60px -15px oklch(0.1 0.05 270 / 0.8), 0 10px 25px -5px oklch(0.72 0.22 320 / 0.35);
+  --shadow-elevated: 0 25px 50px -12px oklch(0.05 0.05 270 / 0.6);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +151,54 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-image: var(--gradient-aurora);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-3d { box-shadow: var(--shadow-3d); }
+  .glass {
+    background: oklch(0.18 0.04 270 / 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+  .perspective-1000 { perspective: 1000px; }
+  @keyframes float-3d {
+    0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+    50% { transform: translateY(-12px) rotateX(2deg) rotateY(-2deg); }
+  }
+  .animate-float-3d { animation: float-3d 6s ease-in-out infinite; }
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+  @keyframes blob {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-40px) scale(1.1); }
+    66% { transform: translate(-20px,30px) scale(0.95); }
+  }
+  .animate-blob { animation: blob 14s ease-in-out infinite; }
   }
 }
