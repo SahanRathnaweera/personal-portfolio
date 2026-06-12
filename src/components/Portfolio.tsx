@@ -841,7 +841,7 @@ function Footer() {
               style={{ textShadow: "0 6px 30px oklch(0.72 0.22 320 / 0.6)" }}
               className="text-4xl md:text-6xl font-bold text-gradient animate-gradient mb-4 perspective-1000"
             >
-              Thank you for visiting ✨
+              Thank you for visiting!
             </motion.h2>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Let's connect, collaborate and build software that simply doesn't break.</p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
