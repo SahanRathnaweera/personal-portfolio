@@ -890,6 +890,7 @@ function ScrollTop() {
 export default function Portfolio() {
   return (
     <div className="relative min-h-screen">
+      <QABackground />
       <Nav />
       <AvailableBadge />
       <Hero />
@@ -903,6 +904,56 @@ export default function Portfolio() {
       <Contact />
       <Footer />
       <ScrollTop />
+    </div>
+  );
+}
+
+function QABackground() {
+  const items = [
+    { c: "✓", x: "8%", d: 0, dur: 22 },
+    { c: "</>", x: "18%", d: 4, dur: 28 },
+    { c: "{ }", x: "28%", d: 8, dur: 26 },
+    { c: "✗", x: "40%", d: 2, dur: 30 },
+    { c: "PASS", x: "52%", d: 6, dur: 32 },
+    { c: "✓", x: "62%", d: 10, dur: 24 },
+    { c: "@Test", x: "72%", d: 3, dur: 29 },
+    { c: "200 OK", x: "82%", d: 7, dur: 27 },
+    { c: "BUG", x: "92%", d: 5, dur: 31 },
+    { c: "//", x: "14%", d: 12, dur: 25 },
+    { c: "[ ]", x: "46%", d: 14, dur: 33 },
+    { c: "Given", x: "68%", d: 9, dur: 28 },
+  ];
+  return (
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      {/* soft grid */}
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(128,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(128,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+        }}
+      />
+      {items.map((it, i) => (
+        <motion.span
+          key={i}
+          initial={{ y: "110vh", opacity: 0 }}
+          animate={{ y: "-20vh", opacity: [0, 0.35, 0.35, 0] }}
+          transition={{
+            duration: it.dur,
+            delay: it.d,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.1, 0.85, 1],
+          }}
+          style={{ left: it.x }}
+          className="absolute font-mono text-xs md:text-sm text-[#80ffff] select-none"
+        >
+          {it.c}
+        </motion.span>
+      ))}
     </div>
   );
 }
