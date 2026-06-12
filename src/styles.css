@@ -199,9 +199,9 @@
   box-shadow: var(--shadow-3d);
 }
 @utility glass {
-  background: oklch(0.18 0.04 270 / 0.5);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  border: 1px solid rgba(128, 255, 255, 0.15);
 }
 @utility perspective-1000 {
   perspective: 1000px;
