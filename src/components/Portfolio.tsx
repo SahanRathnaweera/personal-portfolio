@@ -225,6 +225,16 @@ function Hero() {
 function Card3D() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const techs = [
+    { n: "Selenium", a: -90 },
+    { n: "Cucumber", a: -40 },
+    { n: "TestNG", a: 10 },
+    { n: "Postman", a: 60 },
+    { n: "REST Assured", a: 110 },
+    { n: "Manual Testing", a: 160 },
+    { n: "Java", a: 210 },
+    { n: "Jenkins", a: 260 },
+  ];
   return (
     <div
       ref={ref}
@@ -236,25 +246,76 @@ function Card3D() {
       }}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .2s" }}
-      className="relative w-[300px] h-[380px] md:w-[360px] md:h-[440px] rounded-3xl bg-gradient-card glass shadow-3d animate-float-3d p-2 group"
+      className="relative w-[340px] h-[340px] md:w-[460px] md:h-[460px] animate-float-3d group"
     >
-      <div className="absolute -inset-1 bg-gradient-hero animate-gradient rounded-3xl opacity-60 blur-xl group-hover:opacity-90 transition" />
-      <div className="relative w-full h-full rounded-2xl overflow-hidden">
+      {/* Outer rotating gradient ring */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 rounded-full"
+        style={{
+          background:
+            "conic-gradient(from 0deg, oklch(0.72 0.22 320), oklch(0.7 0.2 200), oklch(0.78 0.2 150), oklch(0.72 0.22 320))",
+          filter: "blur(2px)",
+        }}
+      />
+      {/* Inner dark ring */}
+      <div className="absolute inset-[6px] rounded-full bg-background" />
+
+      {/* Counter-rotating dashed ring */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-3 rounded-full border-2 border-dashed border-white/15"
+      />
+
+      {/* Profile picture */}
+      <div className="absolute inset-[18px] rounded-full overflow-hidden shadow-3d">
         <img src={profileImg} alt="Sahan Tharuka" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <div className="glass rounded-2xl px-4 py-3 flex items-center justify-between">
-            <div>
-              <div className="text-xs text-muted-foreground">QA Automation</div>
-              <div className="font-bold">Sahan Tharuka</div>
-            </div>
-            <div className="bg-accent text-accent-foreground rounded-full p-2 shadow-glow">
-              <Bug className="w-4 h-4" />
-            </div>
-          </div>
+        <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
+      </div>
+
+      {/* Glow */}
+      <div className="absolute -inset-6 bg-gradient-hero opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-60 transition" />
+
+      {/* Online badge */}
+      <div className="absolute top-2 right-2 glass rounded-full px-3 py-1 text-xs flex items-center gap-1.5 shadow-glow z-20">
+        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" /> Available
+      </div>
+
+      {/* Floating tech badges orbiting the avatar */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        {techs.map((t, i) => {
+          const rad = (t.a * Math.PI) / 180;
+          const radius = 50; // percent
+          const x = 50 + radius * Math.cos(rad);
+          const y = 50 + radius * Math.sin(rad);
+          return (
+            <motion.span
+              key={t.n}
+              animate={{ rotate: -360 }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              style={{ left: `${x}%`, top: `${y}%` }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 glass text-white font-medium text-[11px] md:text-xs px-3 py-1.5 rounded-full whitespace-nowrap border border-white/20 shadow-glow pointer-events-auto hover:scale-110 transition"
+            >
+              {t.n}
+            </motion.span>
+          );
+        })}
+      </motion.div>
+
+      {/* Name tag below */}
+      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass rounded-2xl px-4 py-2 flex items-center gap-2 shadow-3d z-20">
+        <div className="bg-accent text-accent-foreground rounded-full p-1.5">
+          <Bug className="w-3.5 h-3.5" />
         </div>
-        <div className="absolute top-4 right-4 glass rounded-full px-3 py-1 text-xs flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" /> Online
+        <div>
+          <div className="text-[10px] text-muted-foreground leading-none">QA Automation</div>
+          <div className="font-bold text-sm leading-tight">Sahan Tharuka</div>
         </div>
       </div>
     </div>
