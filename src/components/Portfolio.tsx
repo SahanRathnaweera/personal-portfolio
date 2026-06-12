@@ -33,14 +33,13 @@ const ROLES = [
   "Manual Tester",
   "API Tester",
   "Quality Engineer",
-  "Cucumber BDD Specialist",
 ];
 
 const LINKEDIN = "https://www.linkedin.com/in/sahan-tharuka-28066436b/";
 const GITHUB = "https://github.com/SahanRathnaweera";
 const EMAIL = "sahantharuka0909@gmail.com";
 
-function useTyping(words: string[], speed = 80, pause = 1400) {
+function useTyping(words: string[], speed = 90, pause = 1600) {
   const [i, setI] = useState(0);
   const [text, setText] = useState("");
   const [del, setDel] = useState(false);
@@ -59,7 +58,7 @@ function useTyping(words: string[], speed = 80, pause = 1400) {
           }
         }
       },
-      del ? 40 : speed
+      del ? 35 : speed + Math.random() * 40
     );
     return () => clearTimeout(t);
   }, [text, del, i, words, speed, pause]);
@@ -151,13 +150,18 @@ function Hero() {
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-2xl md:text-3xl font-semibold mb-4 h-10 font-mono"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+            className="text-2xl md:text-3xl font-semibold mb-4 h-10 font-mono flex items-center"
           >
-            <span className="text-foreground">{typed}</span>
-            <span className="text-primary animate-pulse">|</span>
+            <span className="text-gradient animate-gradient bg-[length:200%_200%]">{typed}</span>
+            <motion.span
+              aria-hidden
+              className="inline-block w-[3px] h-7 md:h-8 ml-1 bg-primary rounded-sm"
+              animate={{ opacity: [1, 1, 0, 0] }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear", times: [0, 0.5, 0.5, 1] }}
+            />
           </motion.div>
 
           <motion.p
