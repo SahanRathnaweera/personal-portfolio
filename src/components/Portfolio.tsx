@@ -155,7 +155,7 @@ function Hero() {
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             className="text-2xl md:text-3xl font-semibold mb-4 h-10 font-mono flex items-center"
           >
-            <span className="text-gradient animate-gradient bg-[length:200%_200%]">{typed}</span>
+            <span className="text-white">{typed}</span>
             <motion.span
               aria-hidden
               className="inline-block w-[3px] h-7 md:h-8 ml-1 bg-primary rounded-sm"
