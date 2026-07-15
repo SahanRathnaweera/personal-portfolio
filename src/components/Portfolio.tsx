@@ -116,7 +116,6 @@ function AvailableBadge() {
 }
 
 function Hero() {
-  const typed = useTyping(ROLES);
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
       {/* Animated blobs */}
@@ -153,15 +152,12 @@ function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="text-2xl md:text-3xl font-semibold mb-4 h-10 font-mono flex items-center"
+            className="mb-4 flex items-center gap-3"
           >
-            <span className="text-white">{typed}</span>
-            <motion.span
-              aria-hidden
-              className="inline-block w-[3px] h-7 md:h-8 ml-1 bg-primary rounded-sm"
-              animate={{ opacity: [1, 1, 0, 0] }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear", times: [0, 0.5, 0.5, 1] }}
-            />
+            <span className="h-px w-10 bg-gradient-to-r from-primary to-transparent" />
+            <span className="text-lg md:text-xl font-semibold tracking-wide text-white">
+              QA Automation Engineer
+            </span>
           </motion.div>
 
           <motion.p
@@ -225,16 +221,6 @@ function Hero() {
 function Card3D() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const techs = [
-    { n: "Selenium", a: -90 },
-    { n: "Cucumber", a: -40 },
-    { n: "TestNG", a: 10 },
-    { n: "Postman", a: 60 },
-    { n: "REST Assured", a: 110 },
-    { n: "Manual Testing", a: 160 },
-    { n: "Java", a: 210 },
-    { n: "Jenkins", a: 260 },
-  ];
   return (
     <div
       ref={ref}
@@ -246,76 +232,62 @@ function Card3D() {
       }}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .2s" }}
-      className="relative w-[340px] h-[340px] md:w-[460px] md:h-[460px] animate-float-3d group"
+      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] animate-float-3d group"
     >
-      {/* Outer rotating gradient ring */}
+      {/* Outer rotating conic ring */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 rounded-full"
         style={{
           background:
-            "conic-gradient(from 0deg, oklch(0.72 0.22 320), oklch(0.7 0.2 200), oklch(0.78 0.2 150), oklch(0.72 0.22 320))",
-          filter: "blur(2px)",
+            "conic-gradient(from 0deg, #80ffff, #F0FFFF, #ffffff, #80ffff)",
+          filter: "blur(1px)",
         }}
       />
       {/* Inner dark ring */}
-      <div className="absolute inset-[6px] rounded-full bg-background" />
+      <div className="absolute inset-[4px] rounded-full bg-background" />
 
       {/* Counter-rotating dashed ring */}
       <motion.div
         animate={{ rotate: -360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-3 rounded-full border-2 border-dashed border-white/15"
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-2 rounded-full border border-dashed border-primary/25"
       />
 
       {/* Profile picture */}
-      <div className="absolute inset-[18px] rounded-full overflow-hidden shadow-3d">
+      <div className="absolute inset-[14px] rounded-full overflow-hidden shadow-3d">
         <img src={profileImg} alt="Sahan Tharuka" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
+        <div className="absolute inset-0 rounded-full ring-1 ring-white/20" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
 
-      {/* Glow */}
-      <div className="absolute -inset-6 bg-gradient-hero opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-60 transition" />
+      {/* Ambient glow */}
+      <div className="absolute -inset-10 bg-gradient-hero opacity-25 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
 
-      {/* Online badge */}
-      <div className="absolute top-2 right-2 glass rounded-full px-3 py-1 text-xs flex items-center gap-1.5 shadow-glow z-20">
-        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" /> Available
+      {/* Corner accent brackets */}
+      <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-primary rounded-tl-2xl" />
+      <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-primary rounded-tr-2xl" />
+      <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-primary rounded-bl-2xl" />
+      <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-primary rounded-br-2xl" />
+
+      {/* Status badge */}
+      <div className="absolute top-3 right-3 glass rounded-full px-3 py-1 text-[11px] flex items-center gap-1.5 shadow-glow z-20">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+        </span>
+        Available
       </div>
 
-      {/* Floating tech badges orbiting the avatar */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        {techs.map((t, i) => {
-          const rad = (t.a * Math.PI) / 180;
-          const radius = 50; // percent
-          const x = 50 + radius * Math.cos(rad);
-          const y = 50 + radius * Math.sin(rad);
-          return (
-            <motion.span
-              key={t.n}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              style={{ left: `${x}%`, top: `${y}%` }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 glass text-white font-medium text-[11px] md:text-xs px-3 py-1.5 rounded-full whitespace-nowrap border border-white/20 shadow-glow pointer-events-auto hover:scale-110 transition"
-            >
-              {t.n}
-            </motion.span>
-          );
-        })}
-      </motion.div>
-
-      {/* Name tag below */}
-      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass rounded-2xl px-4 py-2 flex items-center gap-2 shadow-3d z-20">
-        <div className="bg-accent text-accent-foreground rounded-full p-1.5">
-          <Bug className="w-3.5 h-3.5" />
+      {/* Name plaque */}
+      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass rounded-2xl px-5 py-2.5 flex items-center gap-3 shadow-3d z-20 whitespace-nowrap">
+        <div className="bg-gradient-hero text-primary-foreground rounded-full p-2">
+          <Bug className="w-4 h-4" />
         </div>
         <div>
-          <div className="text-[10px] text-muted-foreground leading-none">QA Automation</div>
-          <div className="font-bold text-sm leading-tight">Sahan Tharuka</div>
+          <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground leading-none">QA Automation</div>
+          <div className="font-bold text-sm leading-tight text-gradient">Sahan Tharuka</div>
         </div>
       </div>
     </div>
