@@ -271,15 +271,6 @@ function Card3D() {
       <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-primary rounded-bl-2xl" />
       <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-primary rounded-br-2xl" />
 
-      {/* Status badge */}
-      <div className="absolute top-3 right-3 glass rounded-full px-3 py-1 text-[11px] flex items-center gap-1.5 shadow-glow z-20">
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-        </span>
-        Available
-      </div>
-
       {/* Name plaque */}
       <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass rounded-2xl px-5 py-2.5 flex items-center gap-3 shadow-3d z-20 whitespace-nowrap">
         <div className="bg-gradient-hero text-primary-foreground rounded-full p-2">
