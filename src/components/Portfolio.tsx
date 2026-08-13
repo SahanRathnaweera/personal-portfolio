@@ -381,6 +381,7 @@ const EXPERIENCES = [
     title: "Event Coordinator",
     org: "CSSL GenZ Chapter | NSBM Green University",
     skills: ["Teamwork", "Event Coordination"],
+    img: csslAsset.url,
     desc: "Planning and executing GenZ community events under the Computer Society of Sri Lanka.",
   },
   {
