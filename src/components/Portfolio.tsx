@@ -382,6 +382,7 @@ const EXPERIENCES = [
     org: "CSSL GenZ Chapter | NSBM Green University",
     skills: ["Teamwork", "Event Coordination"],
     img: csslAsset.url,
+    fit: "contain" as const,
     desc: "Planning and executing GenZ community events under the Computer Society of Sri Lanka.",
   },
   {
@@ -402,8 +403,8 @@ function Experience() {
             <Reveal key={e.title} delay={i * 0.1}>
               <motion.div whileHover={{ y: -8 }} className="glass rounded-3xl p-6 shadow-3d h-full flex flex-col">
                 {e.img && (
-                  <div className="rounded-2xl overflow-hidden mb-4 aspect-video bg-muted">
-                    <img src={e.img} alt={e.title} className="w-full h-full object-cover" />
+                  <div className="rounded-2xl overflow-hidden mb-4 aspect-video bg-black/40">
+                    <img src={e.img} alt={e.title} className={`w-full h-full ${"fit" in e && e.fit === "contain" ? "object-contain" : "object-cover"}`} />
                   </div>
                 )}
                 <div className="flex items-center gap-2 text-xs text-primary mb-2">
