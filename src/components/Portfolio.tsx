@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
+import csslAsset from "@/assets/cssl-experience.jpg.asset.json";
 
 const ROLES = [
   "QA Automation Engineer",
@@ -380,6 +381,7 @@ const EXPERIENCES = [
     title: "Event Coordinator",
     org: "CSSL GenZ Chapter | NSBM Green University",
     skills: ["Teamwork", "Event Coordination"],
+    img: csslAsset.url,
     desc: "Planning and executing GenZ community events under the Computer Society of Sri Lanka.",
   },
   {
