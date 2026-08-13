@@ -390,6 +390,8 @@ const EXPERIENCES = [
     title: "Marketing Team Member",
     org: "IEEE JamborIEEE 2026 — IEEE Sri Lanka Section",
     skills: ["Marketing", "Organizing", "Collaboration"],
+    img: jamborieeeAsset.url,
+    fit: "contain" as const,
     desc: "Appointed as an Organizing Committee (OC) Member — Marketing, representing NSBM Green University for JamborIEEE 2026, a flagship event co-organized by IEEE Sri Lanka Section SLSAC with KDU, Kelaniya, Peradeniya, NSBM and Wayamba.",
   },
 ];
