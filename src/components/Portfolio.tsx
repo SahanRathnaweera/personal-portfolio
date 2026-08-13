@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
+import csslAsset from "@/assets/cssl-experience.jpg.asset.json";
 
 const ROLES = [
   "QA Automation Engineer",
