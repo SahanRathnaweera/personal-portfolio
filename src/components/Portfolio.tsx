@@ -85,7 +85,7 @@ function Nav() {
       transition={{ duration: 0.6 }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
     >
-      <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-gradient">
+      <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
         ST.
       </a>
       {links.map(([n, h]) => (
@@ -143,12 +143,12 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-foreground"
           >
             Hi, I'm{" "}
-            <span className="text-gradient animate-gradient">Sahan</span>
+            <span className="text-primary">Sahan</span>
             <br />
-            <span className="text-gradient animate-gradient">Tharuka</span>
+            <span className="text-primary">Tharuka</span>
           </motion.h1>
 
           <motion.div
@@ -157,8 +157,8 @@ function Hero() {
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             className="mb-4 flex items-center gap-3"
           >
-            <span className="h-px w-10 bg-gradient-to-r from-primary to-transparent" />
-            <span className="text-lg md:text-xl font-semibold tracking-wide text-white">
+            <span className="h-px w-10 bg-primary" />
+            <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
               QA Automation Engineer
             </span>
           </motion.div>
@@ -178,14 +178,14 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="#contact" className="group bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
             </a>
             <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-              <Rocket className="w-4 h-4" /> View Projects
+              <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
             <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-              <Mail className="w-4 h-4" /> Contact Me
+              <Mail className="w-4 h-4 text-primary" /> Contact Me
             </a>
           </motion.div>
 
