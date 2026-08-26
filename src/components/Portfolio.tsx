@@ -244,7 +244,7 @@ function Card3D() {
         className="absolute inset-0 rounded-full"
         style={{
           background:
-            "conic-gradient(from 0deg, #a78bfa, #ffffff, #facc15, #a78bfa)",
+            "conic-gradient(from 0deg, #8A2BE2, #BFFF00, #ffffff, #d3d3d3, #8A2BE2)",
           filter: "blur(1px)",
         }}
       />
@@ -908,7 +908,7 @@ function QABackground() {
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(167,139,250,0.45) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.45) 1px, transparent 1px)",
+            "linear-gradient(rgba(138,43,226,0.45) 1px, transparent 1px), linear-gradient(90deg, rgba(138,43,226,0.45) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage:
             "radial-gradient(ellipse at center, black 30%, transparent 75%)",
@@ -927,7 +927,7 @@ function QABackground() {
             times: [0, 0.1, 0.85, 1],
           }}
           style={{ left: it.x }}
-          className="absolute font-mono text-xs md:text-sm text-[#facc15] select-none"
+          className="absolute font-mono text-xs md:text-sm text-[#BFFF00] select-none"
         >
           {it.c}
         </motion.span>
