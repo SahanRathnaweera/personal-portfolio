@@ -244,7 +244,7 @@ function Card3D() {
         className="absolute inset-0 rounded-full"
         style={{
           background:
-            "conic-gradient(from 0deg, #8A2BE2, #BFFF00, #ffffff, #d3d3d3, #8A2BE2)",
+            "conic-gradient(from 0deg, #BFFF00, #ffffff, #d3d3d3, #BFFF00)",
           filter: "blur(1px)",
         }}
       />
@@ -255,7 +255,7 @@ function Card3D() {
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-2 rounded-full border border-dashed border-primary/25"
+        className="absolute inset-2 rounded-full border border-dashed border-secondary/30"
       />
 
       {/* Profile picture */}
@@ -266,7 +266,7 @@ function Card3D() {
       </div>
 
       {/* Ambient glow */}
-      <div className="absolute -inset-10 bg-gradient-hero opacity-25 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
+      <div className="absolute -inset-10 bg-primary/20 opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
 
       {/* Corner accent brackets */}
       <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-primary rounded-tl-2xl" />
@@ -276,12 +276,12 @@ function Card3D() {
 
       {/* Name plaque */}
       <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass rounded-2xl px-5 py-2.5 flex items-center gap-3 shadow-3d z-20 whitespace-nowrap">
-        <div className="bg-gradient-hero text-primary-foreground rounded-full p-2">
+        <div className="bg-primary text-primary-foreground rounded-full p-2">
           <Bug className="w-4 h-4" />
         </div>
         <div>
           <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground leading-none">QA Automation</div>
-          <div className="font-bold text-sm leading-tight text-gradient">Sahan Tharuka</div>
+          <div className="font-bold text-sm leading-tight text-foreground">Sahan Tharuka</div>
         </div>
       </div>
     </div>
