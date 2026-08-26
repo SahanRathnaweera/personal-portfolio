@@ -908,7 +908,7 @@ function QABackground() {
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(167,139,250,0.45) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.45) 1px, transparent 1px)",
+            "linear-gradient(rgba(138,43,226,0.45) 1px, transparent 1px), linear-gradient(90deg, rgba(138,43,226,0.45) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage:
             "radial-gradient(ellipse at center, black 30%, transparent 75%)",
