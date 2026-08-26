@@ -63,36 +63,36 @@
 
 :root {
   --radius: 0.875rem;
-  /* Professional palette: BlueViolet / Lime #BFFF00 / LightGray / Pure White / Black */
-  --background: oklch(0.12 0 0);
+  /* Clean palette: Lime #BFFF00 / LightGray / Pure White / Near-Black */
+  --background: oklch(0.08 0 0);
   --foreground: oklch(0.99 0 0);
-  --card: oklch(0.18 0.01 285);
+  --card: oklch(0.12 0 0);
   --card-foreground: oklch(0.99 0 0);
-  --popover: oklch(0.18 0.01 285);
+  --popover: oklch(0.12 0 0);
   --popover-foreground: oklch(0.99 0 0);
-  --primary: #8A2BE2;
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: #BFFF00;
-  --secondary-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.26 0.01 285);
-  --muted-foreground: oklch(0.75 0.008 285);
+  --primary: #BFFF00;
+  --primary-foreground: oklch(0.08 0 0);
+  --secondary: #d3d3d3;
+  --secondary-foreground: oklch(0.08 0 0);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.7 0 0);
   --accent: #BFFF00;
-  --accent-foreground: oklch(0.12 0 0);
+  --accent-foreground: oklch(0.08 0 0);
   --destructive: oklch(0.62 0.23 25);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.98 0 0 / 0.12);
-  --input: oklch(0.26 0.01 285);
-  --ring: #8A2BE2;
+  --input: oklch(0.18 0 0);
+  --ring: #BFFF00;
 
-  /* Brand gradients & glows */
-  --gradient-hero: linear-gradient(135deg, #8A2BE2, #BFFF00, #ffffff, #d3d3d3);
-  --gradient-text: linear-gradient(135deg, #8A2BE2, #ffffff, #BFFF00);
-  --gradient-aurora: radial-gradient(at 18% 18%, rgba(138, 43, 226, 0.22), transparent 55%),
-                     radial-gradient(at 82% 28%, rgba(191, 255, 0, 0.12), transparent 55%),
-                     radial-gradient(at 50% 88%, rgba(211, 211, 211, 0.10), transparent 60%);
-  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(138,43,226,0.06));
-  --shadow-glow: 0 20px 60px -10px rgba(191, 255, 0, 0.45);
-  --shadow-3d: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 10px 25px -5px rgba(138, 43, 226, 0.28);
+  /* Solid-first palette: only background keeps a subtle gradient */
+  --gradient-hero: linear-gradient(135deg, #BFFF00, #ffffff, #d3d3d3);
+  --gradient-text: linear-gradient(135deg, #ffffff, #BFFF00);
+  --gradient-aurora: radial-gradient(at 18% 18%, rgba(191, 255, 0, 0.15), transparent 55%),
+                     radial-gradient(at 82% 28%, rgba(255, 255, 255, 0.08), transparent 55%),
+                     radial-gradient(at 50% 88%, rgba(211, 211, 211, 0.06), transparent 60%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(191,255,0,0.04));
+  --shadow-glow: 0 20px 60px -10px rgba(191, 255, 0, 0.35);
+  --shadow-3d: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 10px 25px -5px rgba(191, 255, 0, 0.22);
   --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -201,7 +201,7 @@
 @utility glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(138, 43, 226, 0.20);
+  border: 1px solid rgba(191, 255, 0, 0.15);
 }
 @utility perspective-1000 {
   perspective: 1000px;

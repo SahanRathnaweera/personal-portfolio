@@ -85,7 +85,7 @@ function Nav() {
       transition={{ duration: 0.6 }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
     >
-      <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-gradient">
+      <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
         ST.
       </a>
       {links.map(([n, h]) => (
@@ -143,12 +143,12 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-foreground"
           >
             Hi, I'm{" "}
-            <span className="text-gradient animate-gradient">Sahan</span>
+            <span className="text-primary">Sahan</span>
             <br />
-            <span className="text-gradient animate-gradient">Tharuka</span>
+            <span className="text-primary">Tharuka</span>
           </motion.h1>
 
           <motion.div
@@ -157,8 +157,8 @@ function Hero() {
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             className="mb-4 flex items-center gap-3"
           >
-            <span className="h-px w-10 bg-gradient-to-r from-primary to-transparent" />
-            <span className="text-lg md:text-xl font-semibold tracking-wide text-white">
+            <span className="h-px w-10 bg-primary" />
+            <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
               QA Automation Engineer
             </span>
           </motion.div>
@@ -178,14 +178,14 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="#contact" className="group bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
             </a>
             <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-              <Rocket className="w-4 h-4" /> View Projects
+              <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
             <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-              <Mail className="w-4 h-4" /> Contact Me
+              <Mail className="w-4 h-4 text-primary" /> Contact Me
             </a>
           </motion.div>
 
@@ -244,7 +244,7 @@ function Card3D() {
         className="absolute inset-0 rounded-full"
         style={{
           background:
-            "conic-gradient(from 0deg, #8A2BE2, #BFFF00, #ffffff, #d3d3d3, #8A2BE2)",
+            "conic-gradient(from 0deg, #BFFF00, #ffffff, #d3d3d3, #BFFF00)",
           filter: "blur(1px)",
         }}
       />
@@ -255,7 +255,7 @@ function Card3D() {
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-2 rounded-full border border-dashed border-primary/25"
+        className="absolute inset-2 rounded-full border border-dashed border-secondary/30"
       />
 
       {/* Profile picture */}
@@ -266,7 +266,7 @@ function Card3D() {
       </div>
 
       {/* Ambient glow */}
-      <div className="absolute -inset-10 bg-gradient-hero opacity-25 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
+      <div className="absolute -inset-10 bg-primary/20 opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
 
       {/* Corner accent brackets */}
       <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-primary rounded-tl-2xl" />
@@ -276,12 +276,12 @@ function Card3D() {
 
       {/* Name plaque */}
       <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass rounded-2xl px-5 py-2.5 flex items-center gap-3 shadow-3d z-20 whitespace-nowrap">
-        <div className="bg-gradient-hero text-primary-foreground rounded-full p-2">
+        <div className="bg-primary text-primary-foreground rounded-full p-2">
           <Bug className="w-4 h-4" />
         </div>
         <div>
           <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground leading-none">QA Automation</div>
-          <div className="font-bold text-sm leading-tight text-gradient">Sahan Tharuka</div>
+          <div className="font-bold text-sm leading-tight text-foreground">Sahan Tharuka</div>
         </div>
       </div>
     </div>
