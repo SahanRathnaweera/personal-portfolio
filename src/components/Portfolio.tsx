@@ -806,33 +806,65 @@ function Footer() {
     ["Contact", "#contact"],
   ];
   return (
-    <footer className="relative pt-20 pb-10 px-6 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-aurora opacity-50" />
-      <div className="relative max-w-7xl mx-auto">
+    <footer className="relative mt-24 px-6 overflow-hidden">
+      {/* top accent line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-[min(80%,64rem)] bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-aurora opacity-30" />
+
+      <div className="relative max-w-6xl mx-auto pt-16 pb-8">
         <Reveal>
-          <div className="glass rounded-3xl p-10 shadow-3d text-center">
-            <motion.h2
-              initial={{ opacity: 0, scale: 0.8, rotateX: -30 }}
-              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              style={{ textShadow: "0 6px 30px oklch(0.72 0.22 320 / 0.6)" }}
-              className="text-4xl md:text-6xl font-bold text-gradient animate-gradient mb-4 perspective-1000"
-            >
-              Thank you for visiting!
-            </motion.h2>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Let's connect, collaborate and build software that simply doesn't break.</p>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {links.map(([n, h]) => (
-                <a key={h} href={h} className="text-sm glass rounded-full px-4 py-2 hover:bg-white/10 hover:text-primary transition">{n}</a>
-              ))}
+          <div className="glass rounded-3xl p-8 md:p-12 shadow-3d">
+            {/* CTA row */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 pb-10 border-b border-border/60">
+              <div className="text-left">
+                <div className="text-primary text-xs font-mono tracking-[0.3em] uppercase mb-3">// Let's talk</div>
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+                  Let's build software that<br />
+                  <span className="text-primary">simply doesn't break.</span>
+                </h2>
+              </div>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="group inline-flex items-center gap-3 self-start md:self-auto bg-primary text-primary-foreground font-semibold px-7 py-4 rounded-full shadow-glow hover:scale-105 transition"
+              >
+                <Mail className="w-5 h-5" />
+                Get in touch
+                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
             </div>
-            <div className="flex justify-center gap-3 mb-6">
-              <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 transition"><Github className="w-5 h-5" /></a>
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 transition"><Linkedin className="w-5 h-5" /></a>
-              <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 transition"><Mail className="w-5 h-5" /></a>
+
+            {/* middle grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-10 text-left">
+              <div>
+                <div className="text-xl font-bold mb-2">Sahan <span className="text-primary">Tharuka</span></div>
+                <p className="text-sm text-muted-foreground leading-relaxed">QA Automation Engineer crafting reliable, well-tested software experiences.</p>
+              </div>
+              <div>
+                <div className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-4">Navigate</div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  {links.map(([n, h]) => (
+                    <a key={h} href={h} className="text-sm text-muted-foreground hover:text-primary transition">{n}</a>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-4">Connect</div>
+                <div className="flex gap-3">
+                  <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Github className="w-5 h-5" /></a>
+                  <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Linkedin className="w-5 h-5" /></a>
+                  <a href={`mailto:${EMAIL}`} aria-label="Email" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Mail className="w-5 h-5" /></a>
+                </div>
+              </div>
             </div>
-            <div className="text-sm text-muted-foreground">© 2026 — Sahan Tharuka — Thank u 💜</div>
+
+            {/* bottom bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/60 text-sm text-muted-foreground">
+              <div>© 2026 Sahan Tharuka. All rights reserved.</div>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                Thank you for visiting!
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>
