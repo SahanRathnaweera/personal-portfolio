@@ -14,7 +14,7 @@ import {
   Code2,
   Bug,
   Cpu,
-  Sparkles,
+  
   Award,
   Briefcase,
   GraduationCap,
