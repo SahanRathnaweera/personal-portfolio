@@ -7,6 +7,7 @@ import {
   MapPin,
   Download,
   ExternalLink,
+  ArrowUpRight,
   ArrowUp,
   Phone,
   Calendar,
