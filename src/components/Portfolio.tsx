@@ -14,7 +14,7 @@ import {
   Code2,
   Bug,
   Cpu,
-  Sparkles,
+  
   Award,
   Briefcase,
   GraduationCap,
@@ -87,7 +87,7 @@ function Nav() {
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
     >
       <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
-        ST.
+        Sahan Tharuka
       </a>
       {links.map(([n, h]) => (
         <a
@@ -136,8 +136,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs"
           >
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span>Computer Science Undergraduate @ NSBM</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <span className="text-muted-foreground">Computer Science Undergraduate @ NSBM</span>
           </motion.div>
 
           <motion.h1
