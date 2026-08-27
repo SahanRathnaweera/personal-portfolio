@@ -37,11 +37,15 @@ I am a passionate Computer Science undergraduate specializing in **Software Qual
 ---
 
 
-### 📊 GitHub Profile
-<p>
-  <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"/>
-  <img src="https://img.shields.io/badge/Maintained%3F-Yes-green?style=for-the-badge" alt="Maintained"/>
-</p>
+### 🏆 GitHub Stats
+<div align="left">
+  <a href="https://github.com/SahanRathnaweera" target="_blank">
+    <img src="https://img.shields.io/github/followers/SahanRathnaweera?style=social&label=Followers" alt="GitHub Followers" />
+  </a>
+  <a href="https://github.com/SahanRathnaweera?tab=repositories" target="_blank">
+    <img src="https://img.shields.io/github/stars/SahanRathnaweera?style=social&label=Stars" alt="GitHub Stars" />
+  </a>
+</div>
 
 ---
 
