@@ -3,7 +3,7 @@
   <p><b>Computer Science Undergraduate at NSBM Green University | QA Automation Engineer</b></p>
   
   <p>
-    <a href="https://www.linkedin.com/in/sahan-rathnaweera" target="_blank">
+    <a href="https://www.linkedin.com/in/sahan-tharuka-28066436b" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
     </a>
     <a href="mailto:sahantharuka0909@gmail.com">
