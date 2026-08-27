@@ -199,10 +199,10 @@ function Hero() {
             <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-secondary transition-all">
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 hover:text-accent transition-all">
+            <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>
