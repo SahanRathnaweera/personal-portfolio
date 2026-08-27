@@ -198,7 +198,7 @@ function Hero() {
             <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-secondary transition-all">
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-secondary transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
             <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 hover:text-accent transition-all">
@@ -596,7 +596,7 @@ function Projects() {
         <Reveal delay={0.4}>
           <div className="mt-10 text-center glass rounded-2xl p-6 shadow-3d max-w-2xl mx-auto">
             <p className="text-muted-foreground">For more projects, connect with me on</p>
-            <a href={LINKEDIN} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
               <Linkedin className="w-4 h-4" /> LinkedIn — Sahan Tharuka
             </a>
           </div>
@@ -829,7 +829,7 @@ function Footer() {
             </div>
             <div className="flex justify-center gap-3 mb-6">
               <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 transition"><Github className="w-5 h-5" /></a>
-              <a href={LINKEDIN} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 transition"><Linkedin className="w-5 h-5" /></a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 transition"><Linkedin className="w-5 h-5" /></a>
               <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 transition"><Mail className="w-5 h-5" /></a>
             </div>
             <div className="text-sm text-muted-foreground">© 2026 — Sahan Tharuka — Thank u 💜</div>
