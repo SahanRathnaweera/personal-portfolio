@@ -363,7 +363,7 @@ const EXPERIENCES = [
     title: "Logistics Lead",
     org: "IEEE Student Branch — NSBM Green University",
     skills: ["Team Management", "Team Leadership", "Communication"],
-    img: duothanAsset.url,
+    img: duothanImg,
     fit: "contain" as const,
     desc: "Served as the Logistics Lead for Duothan 6.0, a national-level inter-university hackathon organized by the IEEE Student Branch of NSBM Green University. Coordinated logistics, managed event operations, and collaborated with multiple teams to ensure the successful execution of the event. Balancing these responsibilities alongside my university examinations made this achievement especially rewarding and strengthened my leadership, teamwork, communication, and time management skills.",
   },
