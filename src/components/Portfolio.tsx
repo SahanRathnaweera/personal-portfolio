@@ -260,7 +260,7 @@ function Card3D() {
       />
 
       {/* Profile picture */}
-      <div className="absolute inset-[14px] rounded-full overflow-hidden shadow-3d">
+      <div className="absolute inset-[14px] rounded-full overflow-hidden shadow-3d transition-transform duration-500 ease-out group-hover:scale-105 group-hover:ring-2 group-hover:ring-primary/50 group-hover:shadow-[0_0_40px_rgba(191,255,0,0.2)]">
         <img src={profileImg} alt="Sahan Tharuka" className="w-full h-full object-cover" />
         <div className="absolute inset-0 rounded-full ring-1 ring-white/20" />
         <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/60 via-transparent to-transparent" />
@@ -269,22 +269,8 @@ function Card3D() {
       {/* Ambient glow */}
       <div className="absolute -inset-10 bg-primary/20 opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
 
-      {/* Corner accent brackets */}
-      <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-primary rounded-tl-2xl" />
-      <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-primary rounded-tr-2xl" />
-      <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-primary rounded-bl-2xl" />
-      <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-primary rounded-br-2xl" />
-
-      {/* Name plaque */}
-      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass rounded-2xl px-5 py-2.5 flex items-center gap-3 shadow-3d z-20 whitespace-nowrap">
-        <div className="bg-primary text-primary-foreground rounded-full p-2">
-          <Bug className="w-4 h-4" />
-        </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground leading-none">QA Automation</div>
-          <div className="font-bold text-sm leading-tight text-foreground">Sahan Tharuka</div>
-        </div>
-      </div>
+      {/* Hover ring glow */}
+      <div className="absolute -inset-6 rounded-full border border-primary/0 group-hover:border-primary/30 transition duration-500 -z-10" />
     </div>
   );
 }
