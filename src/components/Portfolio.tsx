@@ -29,7 +29,7 @@ import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslAsset from "@/assets/cssl-team.jpg.asset.json";
 import jamborieeeAsset from "@/assets/jamborieee-2026-album.jpg.asset.json";
-import duothanAsset from "@/assets/duothan-logistics.jpg.asset.json";
+import duothanImg from "@/assets/Duothan.jpeg";
 
 const ROLES = [
   "QA Automation Engineer",
