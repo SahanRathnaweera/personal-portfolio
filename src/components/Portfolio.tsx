@@ -428,13 +428,15 @@ function Experience() {
 
 const SKILLS_AUTO = [
   { n: "Selenium WebDriver", v: 92 },
-  { n: "TestNG", v: 88 },
+  { n: "Playwright (TypeScript)", v: 90 },
+  { n: "Postman & Newman", v: 90 },
+  { n: "TestNG / JUnit", v: 88 },
+  { n: "REST Assured (API Testing)", v: 87 },
   { n: "Cucumber BDD", v: 85 },
-  { n: "REST Assured", v: 87 },
-  { n: "Postman / Newman", v: 90 },
-  { n: "CI/CD (Jenkins, GH Actions)", v: 80 },
+  { n: "Performance Testing (JMeter)", v: 85 },
+  { n: "CI/CD (GitHub Actions)", v: 85 },
 ];
-const SKILLS_LANG = ["Java", "JavaScript", "SQL", "HTML / CSS", "Python", "Gherkin"];
+const SKILLS_LANG = ["Java", "TypeScript", "JavaScript", "SQL", "Gherkin", "HTML / CSS"];
 
 function Skills() {
   return (
@@ -448,7 +450,7 @@ function Skills() {
                 <div className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-glow">
                   <Zap className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold">Automation</h3>
+                <h3 className="text-2xl font-bold">Automation & Performance</h3>
               </div>
               <div className="space-y-5">
                 {SKILLS_AUTO.map((s, i) => (
@@ -499,7 +501,7 @@ function Skills() {
               <div className="mt-8">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Tech I Work With</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Selenium", "Cucumber", "Java", "Postman", "Jenkins", "Jira", "GitHub", "Maven", "REST Assured", "SQL", "TestNG"].map((t) => (
+                  {["Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber", "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL"].map((t) => (
                     <span key={t} className="text-xs px-3 py-1.5 rounded-full bg-gradient-card border border-border">{t}</span>
                   ))}
                 </div>
