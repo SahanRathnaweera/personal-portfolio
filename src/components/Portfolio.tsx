@@ -27,8 +27,8 @@ import {
 } from "lucide-react";
 import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
-import csslAsset from "@/assets/cssl-team.jpg.asset.json";
-import jamborieeeAsset from "@/assets/jamborieee-2026-album.jpg.asset.json";
+import csslImg from "@/assets/CSSL.jpeg";
+import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
 
 const ROLES = [
@@ -378,7 +378,7 @@ const EXPERIENCES = [
     title: "Event Coordinator",
     org: "CSSL GenZ Chapter | NSBM Green University",
     skills: ["Teamwork", "Event Coordination"],
-    img: csslAsset.url,
+    img: csslImg,
     fit: "contain" as const,
     desc: "Planning and executing GenZ community events under the Computer Society of Sri Lanka.",
   },
@@ -386,7 +386,7 @@ const EXPERIENCES = [
     title: "Marketing Team Member",
     org: "IEEE JamborIEEE 2026 — IEEE Sri Lanka Section",
     skills: ["Marketing", "Organizing", "Collaboration"],
-    img: jamborieeeAsset.url,
+    img: jamborieeeImg,
     fit: "contain" as const,
     desc: "Appointed as an Organizing Committee (OC) Member — Marketing, representing NSBM Green University for JamborIEEE 2026, a flagship event co-organized by IEEE Sri Lanka Section SLSAC with KDU, Kelaniya, Peradeniya, NSBM and Wayamba.",
   },
