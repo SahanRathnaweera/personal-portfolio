@@ -428,13 +428,15 @@ function Experience() {
 
 const SKILLS_AUTO = [
   { n: "Selenium WebDriver", v: 92 },
-  { n: "TestNG", v: 88 },
+  { n: "Playwright (TypeScript)", v: 90 },
+  { n: "Postman & Newman", v: 90 },
+  { n: "TestNG / JUnit", v: 88 },
+  { n: "REST Assured (API Testing)", v: 87 },
   { n: "Cucumber BDD", v: 85 },
-  { n: "REST Assured", v: 87 },
-  { n: "Postman / Newman", v: 90 },
-  { n: "CI/CD (Jenkins, GH Actions)", v: 80 },
+  { n: "Performance Testing (JMeter)", v: 85 },
+  { n: "CI/CD (GitHub Actions)", v: 85 },
 ];
-const SKILLS_LANG = ["Java", "JavaScript", "SQL", "HTML / CSS", "Python", "Gherkin"];
+const SKILLS_LANG = ["Java", "TypeScript", "JavaScript", "SQL", "Gherkin", "HTML / CSS"];
 
 function Skills() {
   return (
