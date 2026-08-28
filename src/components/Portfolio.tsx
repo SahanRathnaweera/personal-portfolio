@@ -437,77 +437,120 @@ const SKILLS_AUTO = [
   { n: "CI/CD (GitHub Actions)", v: 85 },
 ];
 const SKILLS_LANG = ["Java", "TypeScript", "JavaScript", "SQL", "Gherkin", "HTML / CSS"];
+const SKILLS_TECH = [
+  "Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber",
+  "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL",
+];
 
 function Skills() {
   return (
     <section id="skills" className="relative py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader kicker="toolbox" title="Toolbox & Expertise" subtitle="Tools, frameworks and languages I work with daily." />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch">
           <Reveal>
-            <div className="glass rounded-3xl p-7 shadow-3d">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-glow">
-                  <Zap className="w-5 h-5 text-primary-foreground" />
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="glass rounded-3xl p-8 shadow-3d h-full bg-gradient-card"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
+                  <Zap className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold">Automation & Performance</h3>
+                <div>
+                  <h3 className="text-2xl font-bold">Automation & Performance</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">Core QA engineering competencies</p>
+                </div>
               </div>
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {SKILLS_AUTO.map((s, i) => (
                   <div key={s.n}>
-                    <div className="flex justify-between text-sm mb-1.5">
-                      <span className="font-medium">{s.n}</span>
-                      <span className="text-muted-foreground font-mono">{s.v}%</span>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium text-foreground">{s.n}</span>
+                      <span className="text-sm font-mono font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-md border border-primary/30">
+                        {s.v}%
+                      </span>
                     </div>
-                    <div className="h-2 rounded-full bg-muted overflow-hidden">
+                    <div className="h-2.5 rounded-full bg-muted overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${s.v}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1.1, delay: i * 0.08, ease: "easeOut" }}
-                        className="h-full bg-gradient-hero animate-gradient rounded-full"
+                        transition={{ duration: 1.2, delay: i * 0.08, ease: "easeOut" }}
+                        className="h-full rounded-full bg-gradient-hero animate-gradient"
                       />
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <div className="glass rounded-3xl p-7 shadow-3d">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-glow">
-                  <Code2 className="w-5 h-5 text-primary-foreground" />
+          <div className="flex flex-col gap-6">
+            <Reveal delay={0.1}>
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
+                    <Code2 className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Languages</h3>
                 </div>
-                <h3 className="text-2xl font-bold">Languages</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {SKILLS_LANG.map((l, i) => (
-                  <motion.div
-                    key={l}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    whileHover={{ scale: 1.04 }}
-                    className="glass rounded-xl p-4 text-center font-semibold border border-border hover:border-primary/50 transition-colors"
-                  >
-                    {l}
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-8">
-                <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Tech I Work With</div>
-                <div className="flex flex-wrap gap-2">
-                  {["Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber", "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL"].map((t) => (
-                    <span key={t} className="text-xs px-3 py-1.5 rounded-full bg-gradient-card border border-border">{t}</span>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {SKILLS_LANG.map((l, i) => (
+                    <motion.div
+                      key={l}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                      whileHover={{ scale: 1.04, borderColor: "rgba(191,255,0,0.5)" }}
+                      className="flex items-center gap-3 glass rounded-xl p-3 border border-border transition-colors"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/30">
+                        <Terminal className="w-4 h-4" />
+                      </div>
+                      <span className="font-semibold text-sm">{l}</span>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </Reveal>
+              </motion.div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                className="glass rounded-3xl p-8 shadow-3d flex-1 bg-gradient-card"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
+                    <Cpu className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Tech I Work With</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {SKILLS_TECH.map((t, i) => (
+                    <motion.span
+                      key={t}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.04 }}
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      className="text-xs font-semibold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/30 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                    >
+                      {t}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
