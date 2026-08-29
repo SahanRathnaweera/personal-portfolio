@@ -140,7 +140,7 @@ function HeroVideo() {
           playsInline
           preload="auto"
           disablePictureInPicture
-          src={heroVideo.url}
+          src={heroVideoUrl}
         />
       </motion.div>
       {/* Spotlight on the speaker — darkens edges, keeps center subject clear */}
