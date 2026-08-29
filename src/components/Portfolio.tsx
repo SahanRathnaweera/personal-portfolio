@@ -270,7 +270,8 @@ function Hero() {
         >
           <Card3D />
         </motion.div>
-      </div>
+      </motion.div>
+
     </section>
   );
 }
