@@ -132,7 +132,7 @@ function HeroVideo() {
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div style={{ y, scale, opacity }} className="absolute inset-0 will-change-transform">
         <video
-          className="w-full h-full object-cover opacity-[0.22] contrast-125 saturate-[0.85]"
+          className="w-full h-full object-cover object-center opacity-[0.34] contrast-125 saturate-[0.9] scale-[1.35] md:scale-[1.25]"
           autoPlay
           loop
           muted
@@ -142,9 +142,12 @@ function HeroVideo() {
           src={heroVideo.url}
         />
       </motion.div>
+      {/* Spotlight on the speaker — darkens edges, keeps center subject clear */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center_45%,transparent_12%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.9)_95%)]" />
+      {/* Subtle lime rim glow framing the subject */}
+      <div className="absolute inset-0 opacity-25 bg-[radial-gradient(ellipse_60%_70%_at_center_45%,transparent_55%,rgba(191,255,0,0.22)_100%)]" />
       {/* Cinematic overlays for legibility */}
-      <div className="absolute inset-0 bg-background/55" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,var(--background)_92%)]" />
+      <div className="absolute inset-0 bg-background/25" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       {/* Scanline texture */}
       <div
