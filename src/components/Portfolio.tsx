@@ -30,7 +30,8 @@ import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
-import heroVideo from "@/assets/hero-bg.mp4.asset.json";
+// Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
+const heroVideoUrl = "/hero-bg.mp4";
 
 
 const ROLES = [
@@ -139,7 +140,7 @@ function HeroVideo() {
           playsInline
           preload="auto"
           disablePictureInPicture
-          src={heroVideo.url}
+          src={heroVideoUrl}
         />
       </motion.div>
       {/* Spotlight on the speaker — darkens edges, keeps center subject clear */}
