@@ -119,17 +119,70 @@ function AvailableBadge() {
   );
 }
 
-function Hero() {
+function HeroVideo() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.06, 1.18]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+    <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div style={{ y, scale, opacity }} className="absolute inset-0 will-change-transform">
+        <video
+          className="w-full h-full object-cover opacity-[0.22] contrast-125 saturate-[0.85]"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          src={heroVideo.url}
+        />
+      </motion.div>
+      {/* Cinematic overlays for legibility */}
+      <div className="absolute inset-0 bg-background/55" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,var(--background)_92%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      {/* Scanline texture */}
+      <div
+        className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
+        style={{ backgroundImage: "repeating-linear-gradient(0deg, #BFFF00 0px, #BFFF00 1px, transparent 1px, transparent 4px)" }}
+      />
+    </div>
+  );
+}
+
+function Hero() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  return (
+    <section
+      id="hero"
+      onMouseMove={(e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        setTilt({ x, y });
+      }}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      className="relative min-h-[100svh] flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden"
+    >
+      <HeroVideo />
+
       {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-primary/30 blur-3xl animate-blob" />
-        <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-secondary/30 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
-        <div className="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-accent/20 blur-3xl animate-blob" style={{ animationDelay: "8s" }} />
+        <div className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-3xl animate-blob" />
+        <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-secondary/20 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-accent/15 blur-3xl animate-blob" style={{ animationDelay: "8s" }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center w-full">
+      <motion.div
+        style={{
+          transform: `perspective(1400px) rotateX(${-tilt.y * 2.2}deg) rotateY(${tilt.x * 2.6}deg) translateZ(0)`,
+          transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
+        }}
+        className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center w-full"
+      >
+
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
