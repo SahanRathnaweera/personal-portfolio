@@ -490,7 +490,7 @@ function Experience() {
 
 const SKILLS_AUTO = [
   { n: "Selenium WebDriver", logo: "https://cdn.simpleicons.org/selenium" },
-  { n: "Playwright", logo: "https://cdn.simpleicons.org/playwright" },
+  { n: "Playwright", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" },
   { n: "Postman & Newman", logo: "https://cdn.simpleicons.org/postman" },
   { n: "JUnit", logo: "https://cdn.simpleicons.org/junit5" },
   { n: "TestNG", icon: "testng" },
