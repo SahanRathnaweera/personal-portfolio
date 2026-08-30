@@ -15,6 +15,8 @@ import {
   Bug,
   Cpu,
   Terminal,
+  FlaskConical,
+  Braces,
   Award,
   Briefcase,
   GraduationCap,
