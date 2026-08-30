@@ -487,20 +487,75 @@ function Experience() {
 }
 
 const SKILLS_AUTO = [
-  { n: "Selenium WebDriver", v: 92 },
-  { n: "Playwright (TypeScript)", v: 90 },
-  { n: "Postman & Newman", v: 90 },
-  { n: "TestNG / JUnit", v: 88 },
-  { n: "REST Assured (API Testing)", v: 87 },
-  { n: "Cucumber BDD", v: 85 },
-  { n: "Performance Testing (JMeter)", v: 85 },
-  { n: "CI/CD (GitHub Actions)", v: 85 },
+  { n: "Selenium WebDriver", logo: "https://cdn.simpleicons.org/selenium" },
+  { n: "Playwright", logo: "https://cdn.simpleicons.org/playwright" },
+  { n: "Postman & Newman", logo: "https://cdn.simpleicons.org/postman" },
+  { n: "JUnit", logo: "https://cdn.simpleicons.org/junit5" },
+  { n: "TestNG", icon: "testng" },
+  { n: "REST Assured", icon: "rest" },
+  { n: "Cucumber BDD", logo: "https://cdn.simpleicons.org/cucumber" },
+  { n: "JMeter", logo: "https://cdn.simpleicons.org/apachejmeter" },
+  { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
 ];
-const SKILLS_LANG = ["Java", "TypeScript", "JavaScript", "SQL", "Gherkin", "HTML / CSS"];
+const SKILLS_LANG = [
+  { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
+  { n: "JavaScript", logo: "https://cdn.simpleicons.org/javascript" },
+  { n: "SQL", logo: "https://cdn.simpleicons.org/mysql" },
+  { n: "Gherkin", logo: "https://cdn.simpleicons.org/cucumber" },
+  { n: "HTML / CSS", logo: "https://cdn.simpleicons.org/html5" },
+];
 const SKILLS_TECH = [
   "Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber",
   "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL",
 ];
+
+function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon?: string }; i: number; small?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 18, scale: 0.92 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.05, type: "spring", stiffness: 180, damping: 18 }}
+      onMouseMove={(e) => {
+        const r = ref.current!.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        setTilt({ x, y });
+      }}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      style={{
+        transform: `perspective(600px) rotateX(${-tilt.y * 14}deg) rotateY(${tilt.x * 14}deg) translateZ(${tilt.x || tilt.y ? 8 : 0}px)`,
+        transformStyle: "preserve-3d",
+      }}
+      className={`group glass rounded-2xl ${small ? "p-3" : "p-4"} border border-border flex flex-col items-center justify-center gap-2.5 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+    >
+      <div
+        className={`${small ? "w-10 h-10" : "w-12 h-12"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-0.5`}
+        style={{ transform: "translateZ(24px)" }}
+      >
+        {s.logo ? (
+          <img
+            src={s.logo}
+            alt={s.n}
+            loading="lazy"
+            className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
+          />
+        ) : s.icon === "testng" ? (
+          <FlaskConical className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
+        ) : (
+          <Braces className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
+        )}
+      </div>
+      <span className={`font-semibold ${small ? "text-xs" : "text-sm"} leading-tight`} style={{ transform: "translateZ(12px)" }}>
+        {s.n}
+      </span>
+    </motion.div>
+  );
+}
 
 function Skills() {
   return (
@@ -523,25 +578,9 @@ function Skills() {
                   <p className="text-sm text-muted-foreground mt-0.5">Core QA engineering competencies</p>
                 </div>
               </div>
-              <div className="space-y-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {SKILLS_AUTO.map((s, i) => (
-                  <div key={s.n}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium text-foreground">{s.n}</span>
-                      <span className="text-sm font-mono font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-md border border-primary/30">
-                        {s.v}%
-                      </span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-muted overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${s.v}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: i * 0.08, ease: "easeOut" }}
-                        className="h-full rounded-full bg-gradient-hero animate-gradient"
-                      />
-                    </div>
-                  </div>
+                  <LogoTile key={s.n} s={s} i={i} />
                 ))}
               </div>
             </motion.div>
@@ -562,20 +601,7 @@ function Skills() {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {SKILLS_LANG.map((l, i) => (
-                    <motion.div
-                      key={l}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.05 }}
-                      whileHover={{ scale: 1.04, borderColor: "rgba(191,255,0,0.5)" }}
-                      className="flex items-center gap-3 glass rounded-xl p-3 border border-border transition-colors"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/30">
-                        <Terminal className="w-4 h-4" />
-                      </div>
-                      <span className="font-semibold text-sm">{l}</span>
-                    </motion.div>
+                    <LogoTile key={l.n} s={l} i={i} small />
                   ))}
                 </div>
               </motion.div>
