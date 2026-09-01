@@ -508,9 +508,19 @@ const SKILLS_LANG = [
   { n: "HTML / CSS", logo: "https://cdn.simpleicons.org/html5" },
 ];
 const SKILLS_TECH = [
-  "Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber",
-  "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL",
+  { n: "Selenium", logo: "https://cdn.simpleicons.org/selenium" },
+  { n: "Playwright", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" },
+  { n: "JMeter", logo: "https://cdn.simpleicons.org/apachejmeter" },
+  { n: "Cucumber", logo: "https://cdn.simpleicons.org/cucumber" },
+  { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { n: "Postman", logo: "https://cdn.simpleicons.org/postman" },
+  { n: "REST Assured", icon: "rest" },
+  { n: "TestNG", icon: "testng" },
+  { n: "Jira", logo: "https://cdn.simpleicons.org/jira" },
+  { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
+  { n: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
 ];
+
 
 function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon?: string }; i: number; small?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -559,19 +569,86 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
   );
 }
 
+type SkillItem = { n: string; logo?: string; icon?: string };
+
+function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  return (
+    <div
+      ref={ref}
+      onMouseMove={(e) => {
+        const r = ref.current!.getBoundingClientRect();
+        setTilt({ x: (e.clientX - r.left) / r.width - 0.5, y: (e.clientY - r.top) / r.height - 0.5 });
+      }}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      style={{
+        transform: `perspective(600px) rotateX(${-tilt.y * 16}deg) rotateY(${tilt.x * 16}deg) translateZ(${tilt.x || tilt.y ? 10 : 0}px)`,
+        transformStyle: "preserve-3d",
+      }}
+      className={`group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+    >
+      <div
+        className={`${small ? "w-8 h-8" : "w-11 h-11"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
+        style={{ transform: "translateZ(26px)" }}
+      >
+        {s.logo ? (
+          <img src={s.logo} alt={s.n} loading="lazy" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
+        ) : s.icon === "testng" ? (
+          <FlaskConical className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
+        ) : (
+          <Braces className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
+        )}
+      </div>
+      <span className={`font-semibold ${small ? "text-[11px]" : "text-xs"} leading-tight`} style={{ transform: "translateZ(14px)" }}>
+        {s.n}
+      </span>
+    </div>
+  );
+}
+
+function LogoMarquee({
+  items,
+  small = false,
+  reverse = false,
+  duration = 32,
+  delay = 0,
+}: { items: SkillItem[]; small?: boolean; reverse?: boolean; duration?: number; delay?: number }) {
+  const loop = [...items, ...items];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 26, scale: 0.94, rotateX: 12 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ delay, type: "spring", stiffness: 150, damping: 18 }}
+      style={{ perspective: 1000 }}
+      className="marquee-mask overflow-hidden py-2 group/marquee"
+    >
+      <div
+        className="flex gap-3 w-max animate-marquee group-hover/marquee:[animation-play-state:paused]"
+        style={{ ["--marquee-duration" as string]: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}
+      >
+        {loop.map((s, i) => (
+          <MarqueeTile key={`${s.n}-${i}`} s={s} small={small} />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 function Skills() {
   return (
     <section id="skills" className="relative py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader kicker="toolbox" title="Toolbox & Expertise" subtitle="Tools, frameworks and languages I work with daily." />
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch">
+        <div className="flex flex-col gap-6">
           <Reveal>
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="glass rounded-3xl p-8 shadow-3d h-full bg-gradient-card"
+              className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
             >
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
                   <Zap className="w-6 h-6 text-primary-foreground" />
                 </div>
@@ -580,20 +657,16 @@ function Skills() {
                   <p className="text-sm text-muted-foreground mt-0.5">Core QA engineering competencies</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {SKILLS_AUTO.map((s, i) => (
-                  <LogoTile key={s.n} s={s} i={i} />
-                ))}
-              </div>
+              <LogoMarquee items={SKILLS_AUTO} duration={34} />
             </motion.div>
           </Reveal>
 
-          <div className="flex flex-col gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             <Reveal delay={0.1}>
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
+                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -601,11 +674,7 @@ function Skills() {
                   </div>
                   <h3 className="text-2xl font-bold">Languages</h3>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {SKILLS_LANG.map((l, i) => (
-                    <LogoTile key={l.n} s={l} i={i} small />
-                  ))}
-                </div>
+                <LogoMarquee items={SKILLS_LANG} small reverse duration={26} delay={0.05} />
               </motion.div>
             </Reveal>
 
@@ -613,7 +682,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d flex-1 bg-gradient-card"
+                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -621,21 +690,7 @@ function Skills() {
                   </div>
                   <h3 className="text-2xl font-bold">Tech I Work With</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {SKILLS_TECH.map((t, i) => (
-                    <motion.span
-                      key={t}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.04 }}
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/30 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-                    >
-                      {t}
-                    </motion.span>
-                  ))}
-                </div>
+                <LogoMarquee items={SKILLS_TECH} small duration={30} delay={0.1} />
               </motion.div>
             </Reveal>
           </div>
