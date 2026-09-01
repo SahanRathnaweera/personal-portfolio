@@ -508,9 +508,19 @@ const SKILLS_LANG = [
   { n: "HTML / CSS", logo: "https://cdn.simpleicons.org/html5" },
 ];
 const SKILLS_TECH = [
-  "Selenium", "Playwright", "JMeter", "Performance Testing", "Cucumber",
-  "Java", "Postman", "REST Assured", "TestNG", "Jira", "GitHub Actions", "MySQL",
+  { n: "Selenium", logo: "https://cdn.simpleicons.org/selenium" },
+  { n: "Playwright", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" },
+  { n: "JMeter", logo: "https://cdn.simpleicons.org/apachejmeter" },
+  { n: "Cucumber", logo: "https://cdn.simpleicons.org/cucumber" },
+  { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { n: "Postman", logo: "https://cdn.simpleicons.org/postman" },
+  { n: "REST Assured", icon: "rest" },
+  { n: "TestNG", icon: "testng" },
+  { n: "Jira", logo: "https://cdn.simpleicons.org/jira" },
+  { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
+  { n: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
 ];
+
 
 function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon?: string }; i: number; small?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
