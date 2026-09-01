@@ -569,6 +569,73 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
   );
 }
 
+type SkillItem = { n: string; logo?: string; icon?: string };
+
+function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  return (
+    <div
+      ref={ref}
+      onMouseMove={(e) => {
+        const r = ref.current!.getBoundingClientRect();
+        setTilt({ x: (e.clientX - r.left) / r.width - 0.5, y: (e.clientY - r.top) / r.height - 0.5 });
+      }}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      style={{
+        transform: `perspective(600px) rotateX(${-tilt.y * 16}deg) rotateY(${tilt.x * 16}deg) translateZ(${tilt.x || tilt.y ? 10 : 0}px)`,
+        transformStyle: "preserve-3d",
+      }}
+      className={`group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+    >
+      <div
+        className={`${small ? "w-8 h-8" : "w-11 h-11"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
+        style={{ transform: "translateZ(26px)" }}
+      >
+        {s.logo ? (
+          <img src={s.logo} alt={s.n} loading="lazy" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
+        ) : s.icon === "testng" ? (
+          <FlaskConical className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
+        ) : (
+          <Braces className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
+        )}
+      </div>
+      <span className={`font-semibold ${small ? "text-[11px]" : "text-xs"} leading-tight`} style={{ transform: "translateZ(14px)" }}>
+        {s.n}
+      </span>
+    </div>
+  );
+}
+
+function LogoMarquee({
+  items,
+  small = false,
+  reverse = false,
+  duration = 32,
+  delay = 0,
+}: { items: SkillItem[]; small?: boolean; reverse?: boolean; duration?: number; delay?: number }) {
+  const loop = [...items, ...items];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 26, scale: 0.94, rotateX: 12 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ delay, type: "spring", stiffness: 150, damping: 18 }}
+      style={{ perspective: 1000 }}
+      className="marquee-mask overflow-hidden py-2 group/marquee"
+    >
+      <div
+        className="flex gap-3 w-max animate-marquee group-hover/marquee:[animation-play-state:paused]"
+        style={{ ["--marquee-duration" as string]: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}
+      >
+        {loop.map((s, i) => (
+          <MarqueeTile key={`${s.n}-${i}`} s={s} small={small} />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 function Skills() {
   return (
     <section id="skills" className="relative py-24 px-6">
