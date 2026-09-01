@@ -699,9 +699,13 @@ function Skills() {
   );
 }
 
+const GITHUB = "https://github.com/SahanRathnaweera";
+const og = (repo: string) => `https://opengraph.githubassets.com/1/SahanRathnaweera/${repo}`;
+
 const PROJECTS = [
   {
     title: "E-Commerce Web Automation Testing Framework",
+    repo: "Ecommerce-Automation-Framework",
     stack: ["Selenium", "Java", "TestNG", "Maven", "Cucumber", "WebDriverManager"],
     bullets: [
       "Framework built using Java, Selenium WebDriver and TestNG with Maven build lifecycle.",
@@ -711,7 +715,8 @@ const PROJECTS = [
     ],
   },
   {
-    title: "Restful-Booker API Automation Framework",
+    title: "Restful-Booker API Automation & CI/CD Framework",
+    repo: "restful-booker-postman-automation",
     stack: ["Postman", "JavaScript", "Newman", "GitHub Actions"],
     bullets: [
       "Fully automated API testing framework using Postman and JavaScript.",
@@ -720,58 +725,120 @@ const PROJECTS = [
     ],
   },
   {
-    title: "SauceDemo Login Page Automation Framework",
-    stack: ["Java", "Selenium", "Cucumber", "TestNG", "Maven"],
+    title: "Playwright E2E Automation & CI/CD Framework",
+    repo: "playwright-saucedemo-e2e",
+    stack: ["TypeScript", "Playwright", "POM", "GitHub Actions"],
     bullets: [
-      "Clean step definitions and highly readable feature files for maintainability.",
-      "Cucumber HTML reporting tracking test execution status visually — 100% passed steps.",
-      "Industry-standard project structuring for scalable test development.",
+      "Scalable, modular E2E framework using the Page Object Model for SauceDemo.",
+      "Covers multi-user authentication, product search, cart operations and checkout.",
+      "GitHub Actions pipeline for headless execution, failure diagnosis and report publishing on every commit.",
+    ],
+  },
+  {
+    title: "Jira Test Management & Agile Defect Lifecycle",
+    repo: "Daraz---Test-Management",
+    stack: ["Jira Cloud", "Agile/Scrum", "Manual Testing", "STLC"],
+    bullets: [
+      "End-to-end manual test execution and defect lifecycle for core Daraz e-commerce workflows using Jira Cloud.",
+      "Structured test tasks with pre-conditions, step-by-step procedures and expected vs. actual behavior logs across sprints.",
+      "Reproducible defect reports with severity/priority triage, re-testing and sprint board status transitions.",
+    ],
+  },
+  {
+    title: "Web Application Performance & Load Testing Framework",
+    repo: "BlazeDemo-Performance-Testing",
+    stack: ["Apache JMeter", "CSV Data-Driven", "Non-GUI CLI", "HTML Reporting"],
+    bullets: [
+      "End-to-end performance suite with JMeter for the BlazeDemo flight booking application.",
+      "Data-driven testing via CSV Data Set Config with SLA assertions (< 2000 ms) and HTTP 200 validation.",
+      "Non-GUI CLI load execution with detailed HTML dashboard reports for throughput, latency and error rates.",
     ],
   },
 ];
+
+function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const srx = useSpring(rx, { stiffness: 180, damping: 20 });
+  const sry = useSpring(ry, { stiffness: 180, damping: 20 });
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    ry.set(((e.clientX - r.left) / r.width - 0.5) * 10);
+    rx.set(-((e.clientY - r.top) / r.height - 0.5) * 10);
+  };
+  const onLeave = () => { rx.set(0); ry.set(0); };
+
+  return (
+    <Reveal delay={i * 0.08}>
+      <motion.div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
+        whileHover={{ y: -10 }}
+        className="glass rounded-3xl overflow-hidden shadow-3d h-full flex flex-col group relative hover:shadow-glow transition-shadow duration-500"
+      >
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition pointer-events-none" />
+        <a href={`${GITHUB}/${p.repo}`} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden">
+          <img
+            src={og(p.repo)}
+            alt={`${p.title} — GitHub repository preview`}
+            loading="lazy"
+            className="w-full aspect-[2/1] object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+          <div className="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-background/70 backdrop-blur border border-primary/30 text-primary">
+            PROJECT {String(i + 1).padStart(2, "0")}
+          </div>
+        </a>
+        <div className="relative p-6 flex flex-col flex-1">
+          <h3 className="text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">{p.title}</h3>
+          <ul className="space-y-2 mb-4 text-sm text-muted-foreground">
+            {p.bullets.map((b) => (
+              <li key={b} className="flex gap-2">
+                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {p.stack.map((s) => (
+              <span key={s} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-md bg-primary/10 text-primary border border-primary/20">{s}</span>
+            ))}
+          </div>
+          <a
+            href={`${GITHUB}/${p.repo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group-hover:shadow-glow"
+          >
+            <Github className="w-4 h-4" /> View GitHub Repository
+          </a>
+        </div>
+      </motion.div>
+    </Reveal>
+  );
+}
 
 function Projects() {
   return (
     <section id="projects" className="relative py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader kicker="featured work" title="Featured Projects" subtitle="Hands-on automation frameworks and testing systems." />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 1200 }}>
           {PROJECTS.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -10, rotateX: 3, rotateY: -3 }}
-                className="glass rounded-3xl p-6 shadow-3d h-full flex flex-col group relative overflow-hidden"
-              >
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition" />
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow mb-4">
-                    <Bug className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div className="text-xs font-mono text-primary mb-2">PROJECT {String(i + 1).padStart(2, "0")}</div>
-                  <h3 className="text-xl font-bold mb-3 leading-snug">{p.title}</h3>
-                  <ul className="space-y-2 mb-4 text-sm text-muted-foreground">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-1.5 mt-auto">
-                    {p.stack.map((s) => (
-                      <span key={s} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-md bg-primary/10 text-primary border border-primary/20">{s}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </Reveal>
+            <ProjectCard key={p.title} p={p} i={i} />
           ))}
         </div>
         <Reveal delay={0.4}>
           <div className="mt-10 text-center glass rounded-2xl p-6 shadow-3d max-w-2xl mx-auto">
-            <p className="text-muted-foreground">For more projects, connect with me on</p>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
-              <Linkedin className="w-4 h-4" /> LinkedIn — Sahan Tharuka
+            <p className="text-muted-foreground">Explore all of my work on</p>
+            <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
+              <Github className="w-4 h-4" /> GitHub — SahanRathnaweera
             </a>
           </div>
         </Reveal>
