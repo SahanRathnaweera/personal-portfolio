@@ -502,7 +502,6 @@ const SKILLS_AUTO = [
 const SKILLS_LANG = [
   { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
   { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
-  { n: "JavaScript", logo: "https://cdn.simpleicons.org/javascript" },
   { n: "SQL", logo: "https://cdn.simpleicons.org/mysql" },
   { n: "Gherkin", logo: "https://cdn.simpleicons.org/cucumber" },
   { n: "HTML / CSS", logo: "https://cdn.simpleicons.org/html5" },
