@@ -641,14 +641,14 @@ function Skills() {
     <section id="skills" className="relative py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader kicker="toolbox" title="Toolbox & Expertise" subtitle="Tools, frameworks and languages I work with daily." />
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch">
+        <div className="flex flex-col gap-6">
           <Reveal>
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="glass rounded-3xl p-8 shadow-3d h-full bg-gradient-card"
+              className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
             >
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
                   <Zap className="w-6 h-6 text-primary-foreground" />
                 </div>
@@ -657,20 +657,16 @@ function Skills() {
                   <p className="text-sm text-muted-foreground mt-0.5">Core QA engineering competencies</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {SKILLS_AUTO.map((s, i) => (
-                  <LogoTile key={s.n} s={s} i={i} />
-                ))}
-              </div>
+              <LogoMarquee items={SKILLS_AUTO} duration={34} />
             </motion.div>
           </Reveal>
 
-          <div className="flex flex-col gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             <Reveal delay={0.1}>
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
+                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -678,11 +674,7 @@ function Skills() {
                   </div>
                   <h3 className="text-2xl font-bold">Languages</h3>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {SKILLS_LANG.map((l, i) => (
-                    <LogoTile key={l.n} s={l} i={i} small />
-                  ))}
-                </div>
+                <LogoMarquee items={SKILLS_LANG} small reverse duration={26} delay={0.05} />
               </motion.div>
             </Reveal>
 
@@ -690,7 +682,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d flex-1 bg-gradient-card"
+                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -698,21 +690,7 @@ function Skills() {
                   </div>
                   <h3 className="text-2xl font-bold">Tech I Work With</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {SKILLS_TECH.map((t, i) => (
-                    <motion.span
-                      key={t}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.04 }}
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/30 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-                    >
-                      {t}
-                    </motion.span>
-                  ))}
-                </div>
+                <LogoMarquee items={SKILLS_TECH} small duration={30} delay={0.1} />
               </motion.div>
             </Reveal>
           </div>
