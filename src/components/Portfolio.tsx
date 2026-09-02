@@ -699,7 +699,6 @@ function Skills() {
   );
 }
 
-const GITHUB = "https://github.com/SahanRathnaweera";
 const og = (repo: string) => `https://opengraph.githubassets.com/1/SahanRathnaweera/${repo}`;
 
 const PROJECTS = [
