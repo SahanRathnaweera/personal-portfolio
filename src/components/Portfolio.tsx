@@ -167,7 +167,6 @@ function Hero() {
     <section
       id="hero"
       onMouseMove={(e) => {
-        if (e.pointerType !== "mouse") return;
         const x = (e.clientX / window.innerWidth - 0.5) * 2;
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
         setTilt({ x, y });
@@ -578,7 +577,6 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
     <div
       ref={ref}
       onMouseMove={(e) => {
-        if (e.pointerType !== "mouse") return;
         const element = ref.current;
         if (!element) return;
         const r = element.getBoundingClientRect();
