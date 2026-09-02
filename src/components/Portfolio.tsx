@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import {
   Github,
   Linkedin,
@@ -699,7 +699,6 @@ function Skills() {
   );
 }
 
-const GITHUB = "https://github.com/SahanRathnaweera";
 const og = (repo: string) => `https://opengraph.githubassets.com/1/SahanRathnaweera/${repo}`;
 
 const PROJECTS = [
