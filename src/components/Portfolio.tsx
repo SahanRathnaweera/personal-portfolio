@@ -167,6 +167,7 @@ function Hero() {
     <section
       id="hero"
       onMouseMove={(e) => {
+        if (e.pointerType !== "mouse") return;
         const x = (e.clientX / window.innerWidth - 0.5) * 2;
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
         setTilt({ x, y });
@@ -577,7 +578,10 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
     <div
       ref={ref}
       onMouseMove={(e) => {
-        const r = ref.current!.getBoundingClientRect();
+        if (e.pointerType !== "mouse") return;
+        const element = ref.current;
+        if (!element) return;
+        const r = element.getBoundingClientRect();
         setTilt({ x: (e.clientX - r.left) / r.width - 0.5, y: (e.clientY - r.top) / r.height - 0.5 });
       }}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
@@ -585,7 +589,7 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
         transform: `perspective(600px) rotateX(${-tilt.y * 16}deg) rotateY(${tilt.x * 16}deg) translateZ(${tilt.x || tilt.y ? 10 : 0}px)`,
         transformStyle: "preserve-3d",
       }}
-      className={`group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+      className={`marquee-tile group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default`}
     >
       <div
         className={`${small ? "w-8 h-8" : "w-11 h-11"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
@@ -1174,7 +1178,7 @@ function QABackground() {
     { c: "Given", x: "68%", d: 9, dur: 28 },
   ];
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div className="qa-background pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
       {/* soft grid */}
       <div
         className="absolute inset-0 opacity-[0.05]"
@@ -1199,7 +1203,7 @@ function QABackground() {
             times: [0, 0.1, 0.85, 1],
           }}
           style={{ left: it.x }}
-          className="absolute font-mono text-xs md:text-sm text-[#BFFF00] select-none"
+          className="qa-particle absolute font-mono text-xs md:text-sm text-primary select-none"
         >
           {it.c}
         </motion.span>

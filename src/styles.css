@@ -228,3 +228,39 @@
   -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
+
+/* Keep the rich desktop presentation while avoiding iOS Safari GPU exhaustion. */
+@media (max-width: 767px), (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: oklch(0.12 0 0 / 0.94);
+  }
+
+  .marquee-tile {
+    transform: none !important;
+    transform-style: flat !important;
+    will-change: auto;
+  }
+
+  .qa-particle:nth-of-type(n + 7) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-blob,
+  .animate-float-3d,
+  .animate-gradient {
+    animation: none !important;
+  }
+
+  .qa-background {
+    display: none;
+  }
+}
