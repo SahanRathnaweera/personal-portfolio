@@ -378,8 +378,13 @@ function About() {
       <div className="max-w-7xl mx-auto">
         <SectionHeader kicker="about" title="About Me" />
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-start">
-          <Reveal>
-            <div className="glass rounded-3xl p-8 shadow-3d space-y-5 text-base md:text-lg leading-relaxed">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 40 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 140, damping: 16 }}
+          >
+            <div className="box-black rounded-3xl p-8 space-y-5 text-base md:text-lg leading-relaxed">
               <p className="text-muted-foreground">
                 An enthusiastic Computer Science undergraduate at NSBM Green University with a keen interest in QA Automation and Quality Engineering. Currently transitioning from manual testing concepts to building robust automation frameworks. Actively developing hands-on projects to bridge the gap between academic theory and industry standards.
               </p>
@@ -393,27 +398,29 @@ function About() {
                 I love exploring Selenium, REST Assured, BDD with Cucumber, and CI/CD pipelines that move quality left and ship faster.
               </p>
               <div className="flex flex-wrap gap-3 pt-3">
-                <span className="glass px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
-                <span className="glass px-4 py-2 rounded-full text-sm flex items-center gap-2"><Target className="w-4 h-4 text-accent" /> QA Automation Focus</span>
+                <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
+                <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><Target className="w-4 h-4 text-accent" /> QA Automation Focus</span>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
 
-          <Reveal delay={0.15}>
-            <div className="grid grid-cols-2 gap-4">
-              {STATS.map((s, idx) => (
-                <motion.div
-                  key={s.l}
-                  whileHover={{ y: -6, rotateX: 6, rotateY: -4 }}
-                  className={`glass rounded-2xl p-5 shadow-3d ${idx === 0 ? "col-span-2 bg-gradient-card" : ""}`}
-                >
-                  <s.i className="w-6 h-6 text-primary mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold text-gradient">{s.n}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{s.l}</div>
-                </motion.div>
-              ))}
-            </div>
-          </Reveal>
+          <div className="grid grid-cols-2 gap-4">
+            {STATS.map((s, idx) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, scale: 0.5, y: 40 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ type: "spring", stiffness: 170, damping: 15, delay: 0.15 + idx * 0.09 }}
+                whileHover={{ y: -6, rotateX: 6, rotateY: -4 }}
+                className={`box-black rounded-2xl p-5 ${idx === 0 ? "col-span-2" : ""}`}
+              >
+                <s.i className="w-6 h-6 text-primary mb-3" />
+                <div className="text-3xl md:text-4xl font-bold text-gradient">{s.n}</div>
+                <div className="text-sm text-muted-foreground mt-1">{s.l}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
