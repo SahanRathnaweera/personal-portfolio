@@ -368,7 +368,7 @@ const STATS = [
   { n: "10+", l: "Projects", i: Rocket },
   { n: "10+", l: "Certificates", i: Award },
   { n: "15+", l: "Technologies", i: Cpu },
-  { n: "300+", l: "Test Cases", i: CheckCircle2 },
+  { n: "100+", l: "Test Cases", i: CheckCircle2 },
   { n: "3+", l: "Volunteering", i: Heart },
 ];
 
