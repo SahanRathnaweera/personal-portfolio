@@ -398,7 +398,7 @@ function About() {
                 Beyond academics, I contribute to the tech community as a <b>Media Coordinator</b> of the IEEE Computer Society Student Branch Chapter and <b>Logistics Lead</b> for Duothan 6.0 at NSBM.
               </p>
               <p className="text-primary font-semibold">
-                🎯 Seeking Quality Engineering / QA Automation Internship opportunities for late 2026 / 2027.
+                Seeking Quality Engineering / QA Automation Internship opportunities for late 2026 / 2027.
               </p>
               <div className="flex flex-wrap gap-3 pt-3">
                 <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
