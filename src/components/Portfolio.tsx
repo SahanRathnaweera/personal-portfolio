@@ -385,17 +385,20 @@ function About() {
             transition={{ type: "spring", stiffness: 140, damping: 16 }}
           >
             <div className="box-black rounded-3xl p-8 space-y-5 text-base md:text-lg leading-relaxed">
-              <p className="text-muted-foreground">
-                An enthusiastic Computer Science undergraduate at NSBM Green University with a keen interest in QA Automation and Quality Engineering. Currently transitioning from manual testing concepts to building robust automation frameworks. Actively developing hands-on projects to bridge the gap between academic theory and industry standards.
-              </p>
               <p>
-                I'm <b className="text-gradient">Sahan Tharuka</b>, a Computer Science undergraduate at <b>NSBM Green University</b>, on a mission to become a world-class QA Automation Engineer and SDET.
+                I’m a <b className="text-gradient">3rd-year Computer Science undergraduate</b> at <b>NSBM Green University</b> (GPA: 3.68/4.0), with a self-driven interest in <b className="text-primary">Quality Engineering</b> and <b className="text-primary">Test Automation</b>.
               </p>
               <p className="text-muted-foreground">
-                My passion lies at the intersection of <mark className="bg-primary/20 text-primary px-1.5 rounded">code</mark> and <mark className="bg-accent/20 text-accent px-1.5 rounded">quality</mark> — designing robust automation frameworks, writing maintainable test suites, and shipping software that simply doesn't break.
+                I’m passionate about building reliable and maintainable automated testing solutions that improve software quality and release confidence. My experience includes <mark className="bg-primary/20 text-primary px-1.5 rounded">Playwright (TypeScript)</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Selenium WebDriver (Java)</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Cucumber</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TestNG</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">POM</mark>, REST API Testing, Postman, RestAssured, and JMeter.
               </p>
               <p className="text-muted-foreground">
-                I love exploring Selenium, REST Assured, BDD with Cucumber, and CI/CD pipelines that move quality left and ship faster.
+                I also have hands-on experience with Git/GitHub, GitHub Actions, CI/CD, Docker basics, Jira, and Agile/Scrum practices, with a strong understanding of STLC and test case design.
+              </p>
+              <p className="text-muted-foreground">
+                Beyond academics, I contribute to the tech community as a <b>Media Coordinator</b> of the IEEE Computer Society Student Branch Chapter and <b>Logistics Lead</b> for Duothan 6.0 at NSBM.
+              </p>
+              <p className="text-primary font-semibold">
+                🎯 Seeking Quality Engineering / QA Automation Internship opportunities for late 2026 / 2027.
               </p>
               <div className="flex flex-wrap gap-3 pt-3">
                 <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
