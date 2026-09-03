@@ -74,6 +74,47 @@ function useTyping(words: string[], speed = 90, pause = 1600) {
   return text;
 }
 
+function MouseHighlight() {
+  const [mounted, setMounted] = useState(false);
+  const [touch, setTouch] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 150, damping: 22, mass: 0.45 });
+  const springY = useSpring(y, { stiffness: 150, damping: 22, mass: 0.45 });
+
+  useEffect(() => {
+    setMounted(true);
+    setTouch(window.matchMedia("(pointer: coarse)").matches);
+    const onMove = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [x, y]);
+
+  if (!mounted || touch) return null;
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
+      style={{ x: springX, y: springY }}
+    >
+      <div
+        className="w-[480px] h-[480px] rounded-full opacity-[0.18] blur-[110px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(191,255,0,0.65) 0%, rgba(138,43,226,0.22) 40%, transparent 72%)",
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary shadow-[0_0_18px_4px_rgba(191,255,0,0.9)]"
+        aria-hidden
+      />
+    </motion.div>
+  );
+}
+
 function Nav() {
   const links = [
     ["About", "#about"],
@@ -1152,6 +1193,7 @@ function ScrollTop() {
 export default function Portfolio() {
   return (
     <div className="relative min-h-screen">
+      <MouseHighlight />
       <QABackground />
       <Nav />
       <AvailableBadge />
