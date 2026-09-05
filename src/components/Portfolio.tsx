@@ -376,7 +376,7 @@ function InfoCard({ label, title, description, link, linkText, external }: {
   );
 }
 
-function Card3D() {
+function ProfileShowcase() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -388,56 +388,40 @@ function Card3D() {
         const r = ref.current!.getBoundingClientRect();
         const x = (e.clientX - r.left - r.width / 2) / r.width;
         const y = (e.clientY - r.top - r.height / 2) / r.height;
-        setTilt({ x: -y * 18, y: x * 18 });
+        setTilt({ x: -y * 8, y: x * 8 });
       }}
       onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
       onMouseEnter={() => setHovered(true)}
       style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .25s cubic-bezier(.22,.61,.36,1)" }}
-      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] group"
+      className="relative w-[320px] h-[400px] md:w-[420px] md:h-[520px] lg:w-[480px] lg:h-[600px] group"
     >
-      {/* Premium ambient glow */}
-      <div className="absolute -inset-12 rounded-full bg-primary/10 opacity-40 blur-[80px] -z-20 group-hover:opacity-60 transition duration-700" />
+      {/* Soft ambient glow behind subject */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[40%] rounded-full bg-primary/15 opacity-60 blur-[90px] -z-10 group-hover:opacity-80 transition duration-700" />
 
-      {/* Outer solid lime ring with subtle pulse */}
+      {/* Subtle lime rim glow */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.02, 1] } : { scale: 1 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
-      >
-        <div className="w-full h-full rounded-full bg-background p-[3px]">
-          <div className="w-full h-full rounded-full border border-white/10" />
-        </div>
-      </motion.div>
-
-      {/* Subtle rotating dashed orbit ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
+        animate={hovered ? { opacity: [0.25, 0.45, 0.25] } : { opacity: 0.25 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-x-[10%] bottom-[5%] h-[70%] rounded-[40%] bg-gradient-to-t from-primary/20 via-transparent to-transparent blur-2xl -z-10"
       />
 
-      {/* Profile picture container */}
-      <div className="absolute inset-[10px] rounded-full overflow-hidden shadow-3d bg-card">
-        <img
-          src={profileImg}
-          alt="Sahan Tharuka"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
-        {/* Professional vignette overlay */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
-        {/* Subtle top shine */}
-        <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-      </div>
+      {/* Profile cutout image */}
+      <motion.img
+        src={profileImg}
+        alt="Sahan Tharuka"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="w-full h-full object-contain object-bottom drop-shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+      />
 
       {/* Floating role badge */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.6 }}
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="glass px-4 py-1.5 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
+        <div className="glass px-4 py-2 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -445,29 +429,6 @@ function Card3D() {
           <span className="text-xs font-semibold whitespace-nowrap">QA Automation Engineer</span>
         </div>
       </motion.div>
-
-      {/* Orbiting tech satellites */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-10 rounded-full pointer-events-none"
-      >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">Java</span>
-        </div>
-      </motion.div>
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-14 rounded-full pointer-events-none"
-      >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">TS</span>
-        </div>
-      </motion.div>
-
-      {/* Hover outer glow ring */}
-      <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
     </div>
   );
 }
