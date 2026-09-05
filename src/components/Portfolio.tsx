@@ -317,7 +317,12 @@ function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="perspective-1000 flex justify-center"
         >
-          <Card3D />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Card3D />
+          </motion.div>
         </motion.div>
       </motion.div>
 
