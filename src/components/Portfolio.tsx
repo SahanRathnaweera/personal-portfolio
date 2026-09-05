@@ -27,7 +27,7 @@ import {
   Zap,
   Heart,
 } from "lucide-react";
-import profileImg from "@/assets/sahan-profile.jpg";
+import profileImg from "@/assets/sahan-profile-cutout.png";
 import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
@@ -215,24 +215,22 @@ function Hero() {
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       className="relative min-h-[100svh] flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden"
     >
-      <HeroVideo />
-
-      {/* Animated blobs */}
+      {/* Clean dark professional background */}
+      <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-3xl animate-blob" />
-        <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-secondary/20 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
-        <div className="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-accent/15 blur-3xl animate-blob" style={{ animationDelay: "8s" }} />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
 
       <motion.div
         style={{
-          transform: `perspective(1400px) rotateX(${-tilt.y * 2.2}deg) rotateY(${tilt.x * 2.6}deg) translateZ(0)`,
+          transform: `perspective(1400px) rotateX(${-tilt.y * 1.2}deg) rotateY(${tilt.x * 1.4}deg) translateZ(0)`,
           transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
         }}
-        className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center w-full"
+        className="relative max-w-7xl mx-auto w-full grid lg:grid-cols-[1fr_1.1fr_1fr] gap-8 items-center"
       >
-
-        <div>
+        {/* Left text */}
+        <div className="order-2 lg:order-1 text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -246,9 +244,9 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-foreground"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 text-foreground"
           >
-            Hi, I'm{" "}
+            I'm{" "}
             <span className="text-primary">Sahan</span>
             <br />
             <span className="text-primary">Tharuka</span>
@@ -258,7 +256,7 @@ function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="mb-4 flex items-center gap-3"
+            className="mb-6 flex items-center justify-center lg:justify-start gap-3"
           >
             <span className="h-px w-10 bg-primary" />
             <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
@@ -270,16 +268,16 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
           >
-            Computer Science Undergraduate at <b className="text-foreground">NSBM Green University</b> | QA Automation Engineering Enthusiast | Java, Selenium, Cucumber BDD, TestNG, CI/CD, API Testing, RestAssured | IEEE &amp; CSSL
+            Building reliable, maintainable automated testing solutions that improve software quality and release confidence.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-3"
+            className="flex flex-wrap justify-center lg:justify-start gap-3"
           >
             <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
@@ -287,16 +285,13 @@ function Hero() {
             <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
-            <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-              <Mail className="w-4 h-4 text-primary" /> Contact Me
-            </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="flex gap-4 mt-8"
+            className="flex justify-center lg:justify-start gap-4 mt-8"
           >
             <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
@@ -310,27 +305,78 @@ function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D rotating profile card */}
+        {/* Center profile cutout */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
-          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="perspective-1000 flex justify-center"
+          className="order-1 lg:order-2 flex justify-center items-end relative"
         >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D />
-          </motion.div>
+          <ProfileShowcase />
+        </motion.div>
+
+        {/* Right info cards */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="order-3 hidden lg:flex flex-col gap-5"
+        >
+          <InfoCard
+            label="ABOUT ME"
+            title="QA Automation Enthusiast"
+            description="3rd-year Computer Science undergraduate at NSBM Green University with a passion for Quality Engineering and test automation."
+            link="#about"
+            linkText="Learn more"
+          />
+          <InfoCard
+            label="MY WORK"
+            title="Automated Testing Frameworks"
+            description="Hands-on experience with Selenium, Playwright, Cucumber, TestNG, Postman, RestAssured, and JMeter."
+            link="#projects"
+            linkText="Browse projects"
+          />
+          <InfoCard
+            label="FOLLOW ME"
+            title="Let's connect"
+            description="Find me on LinkedIn and GitHub for the latest projects and tech insights."
+            link={LINKEDIN}
+            linkText="Connect on LinkedIn"
+            external
+          />
         </motion.div>
       </motion.div>
-
     </section>
   );
 }
 
-function Card3D() {
+function InfoCard({ label, title, description, link, linkText, external }: {
+  label: string;
+  title: string;
+  description: string;
+  link: string;
+  linkText: string;
+  external?: boolean;
+}) {
+  return (
+    <motion.a
+      href={link}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      whileHover={{ y: -4, scale: 1.02 }}
+      className="block box-black rounded-2xl p-5 group hover:border-primary/40 transition-colors"
+    >
+      <span className="text-[10px] font-bold tracking-widest text-primary mb-2 block">{label}</span>
+      <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed mb-4">{description}</p>
+      <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
+        {linkText} <ArrowUpRight className="w-3.5 h-3.5" />
+      </span>
+    </motion.a>
+  );
+}
+
+function ProfileShowcase() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -342,56 +388,40 @@ function Card3D() {
         const r = ref.current!.getBoundingClientRect();
         const x = (e.clientX - r.left - r.width / 2) / r.width;
         const y = (e.clientY - r.top - r.height / 2) / r.height;
-        setTilt({ x: -y * 18, y: x * 18 });
+        setTilt({ x: -y * 8, y: x * 8 });
       }}
       onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
       onMouseEnter={() => setHovered(true)}
       style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .25s cubic-bezier(.22,.61,.36,1)" }}
-      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] group"
+      className="relative w-[320px] h-[400px] md:w-[420px] md:h-[520px] lg:w-[480px] lg:h-[600px] group"
     >
-      {/* Premium ambient glow */}
-      <div className="absolute -inset-12 rounded-full bg-primary/10 opacity-40 blur-[80px] -z-20 group-hover:opacity-60 transition duration-700" />
+      {/* Soft ambient glow behind subject */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[40%] rounded-full bg-primary/15 opacity-60 blur-[90px] -z-10 group-hover:opacity-80 transition duration-700" />
 
-      {/* Outer solid lime ring with subtle pulse */}
+      {/* Subtle lime rim glow */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.02, 1] } : { scale: 1 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
-      >
-        <div className="w-full h-full rounded-full bg-background p-[3px]">
-          <div className="w-full h-full rounded-full border border-white/10" />
-        </div>
-      </motion.div>
-
-      {/* Subtle rotating dashed orbit ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
+        animate={hovered ? { opacity: [0.25, 0.45, 0.25] } : { opacity: 0.25 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-x-[10%] bottom-[5%] h-[70%] rounded-[40%] bg-gradient-to-t from-primary/20 via-transparent to-transparent blur-2xl -z-10"
       />
 
-      {/* Profile picture container */}
-      <div className="absolute inset-[10px] rounded-full overflow-hidden shadow-3d bg-card">
-        <img
-          src={profileImg}
-          alt="Sahan Tharuka"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
-        {/* Professional vignette overlay */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
-        {/* Subtle top shine */}
-        <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-      </div>
+      {/* Profile cutout image */}
+      <motion.img
+        src={profileImg}
+        alt="Sahan Tharuka"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="w-full h-full object-contain object-bottom drop-shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+      />
 
       {/* Floating role badge */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.6 }}
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="glass px-4 py-1.5 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
+        <div className="glass px-4 py-2 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -399,29 +429,6 @@ function Card3D() {
           <span className="text-xs font-semibold whitespace-nowrap">QA Automation Engineer</span>
         </div>
       </motion.div>
-
-      {/* Orbiting tech satellites */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-10 rounded-full pointer-events-none"
-      >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">Java</span>
-        </div>
-      </motion.div>
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-14 rounded-full pointer-events-none"
-      >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">TS</span>
-        </div>
-      </motion.div>
-
-      {/* Hover outer glow ring */}
-      <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
     </div>
   );
 }
