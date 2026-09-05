@@ -27,7 +27,7 @@ import {
   Zap,
   Heart,
 } from "lucide-react";
-import profileImg from "@/assets/sahan-profile.jpg";
+import profileImg from "@/assets/sahan-profile-cutout.png";
 import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
