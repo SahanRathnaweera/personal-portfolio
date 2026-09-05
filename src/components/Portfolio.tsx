@@ -317,7 +317,12 @@ function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="perspective-1000 flex justify-center"
         >
-          <Card3D />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Card3D />
+          </motion.div>
         </motion.div>
       </motion.div>
 
@@ -328,6 +333,8 @@ function Hero() {
 function Card3D() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+
   return (
     <div
       ref={ref}
@@ -335,45 +342,86 @@ function Card3D() {
         const r = ref.current!.getBoundingClientRect();
         const x = (e.clientX - r.left - r.width / 2) / r.width;
         const y = (e.clientY - r.top - r.height / 2) / r.height;
-        setTilt({ x: -y * 15, y: x * 15 });
+        setTilt({ x: -y * 18, y: x * 18 });
       }}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .2s" }}
-      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] animate-float-3d group"
+      onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
+      onMouseEnter={() => setHovered(true)}
+      style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .25s cubic-bezier(.22,.61,.36,1)" }}
+      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] group"
     >
-      {/* Outer rotating conic ring */}
+      {/* Premium ambient glow */}
+      <div className="absolute -inset-12 rounded-full bg-primary/10 opacity-40 blur-[80px] -z-20 group-hover:opacity-60 transition duration-700" />
+
+      {/* Outer solid lime ring with subtle pulse */}
+      <motion.div
+        animate={hovered ? { scale: [1, 1.02, 1] } : { scale: 1 }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+      >
+        <div className="w-full h-full rounded-full bg-background p-[3px]">
+          <div className="w-full h-full rounded-full border border-white/10" />
+        </div>
+      </motion.div>
+
+      {/* Subtle rotating dashed orbit ring */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 rounded-full"
-        style={{
-          background:
-            "conic-gradient(from 0deg, #BFFF00, #ffffff, #d3d3d3, #BFFF00)",
-          filter: "blur(1px)",
-        }}
-      />
-      {/* Inner dark ring */}
-      <div className="absolute inset-[4px] rounded-full bg-background" />
-
-      {/* Counter-rotating dashed ring */}
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-2 rounded-full border border-dashed border-secondary/30"
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
       />
 
-      {/* Profile picture */}
-      <div className="absolute inset-[14px] rounded-full overflow-hidden shadow-3d transition-transform duration-500 ease-out group-hover:scale-105 group-hover:ring-2 group-hover:ring-primary/50 group-hover:shadow-[0_0_40px_rgba(191,255,0,0.2)]">
-        <img src={profileImg} alt="Sahan Tharuka" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 rounded-full ring-1 ring-white/20" />
-        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+      {/* Profile picture container */}
+      <div className="absolute inset-[10px] rounded-full overflow-hidden shadow-3d bg-card">
+        <img
+          src={profileImg}
+          alt="Sahan Tharuka"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+        {/* Professional vignette overlay */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
+        {/* Subtle top shine */}
+        <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Ambient glow */}
-      <div className="absolute -inset-10 bg-primary/20 opacity-30 blur-3xl rounded-full -z-10 group-hover:opacity-50 transition duration-700" />
+      {/* Floating role badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20"
+      >
+        <div className="glass px-4 py-1.5 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          <span className="text-xs font-semibold whitespace-nowrap">QA Automation Engineer</span>
+        </div>
+      </motion.div>
 
-      {/* Hover ring glow */}
-      <div className="absolute -inset-6 rounded-full border border-primary/0 group-hover:border-primary/30 transition duration-500 -z-10" />
+      {/* Orbiting tech satellites */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        className="absolute -inset-10 rounded-full pointer-events-none"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
+          <span className="text-[10px] font-bold text-primary">Java</span>
+        </div>
+      </motion.div>
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+        className="absolute -inset-14 rounded-full pointer-events-none"
+      >
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
+          <span className="text-[10px] font-bold text-primary">TS</span>
+        </div>
+      </motion.div>
+
+      {/* Hover outer glow ring */}
+      <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
     </div>
   );
 }
