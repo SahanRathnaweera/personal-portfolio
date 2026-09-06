@@ -388,42 +388,6 @@ function Card3D() {
         <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating role badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20"
-      >
-        <div className="glass px-4 py-1.5 rounded-full flex items-center gap-2 shadow-glow border-primary/20">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          <span className="text-xs font-semibold whitespace-nowrap">QA Automation Engineer</span>
-        </div>
-      </motion.div>
-
-      {/* Orbiting tech satellites */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-10 rounded-full pointer-events-none"
-      >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">Java</span>
-        </div>
-      </motion.div>
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-14 rounded-full pointer-events-none"
-      >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-9 h-9 rounded-full bg-card border border-primary/30 flex items-center justify-center shadow-glow">
-          <span className="text-[10px] font-bold text-primary">TS</span>
-        </div>
-      </motion.div>
-
       {/* Hover outer glow ring */}
       <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
     </div>
