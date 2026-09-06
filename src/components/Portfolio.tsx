@@ -347,49 +347,49 @@ function Card3D() {
       onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
       onMouseEnter={() => setHovered(true)}
       style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .25s cubic-bezier(.22,.61,.36,1)" }}
-      className="relative w-[280px] h-[360px] md:w-[380px] md:h-[480px] group"
+      className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] group"
     >
       {/* Premium ambient glow */}
-      <div className="absolute -inset-10 rounded-[2rem] bg-primary/10 opacity-40 blur-[70px] -z-20 group-hover:opacity-60 transition duration-700" />
+      <div className="absolute -inset-12 rounded-full bg-primary/10 opacity-40 blur-[80px] -z-20 group-hover:opacity-60 transition duration-700" />
 
       {/* Eye-catching yellow + white + black halo behind profile */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.03, 1], opacity: [0.85, 1, 0.85] } : { scale: [1, 1.015, 1], opacity: [0.7, 0.9, 0.7] }}
+        animate={hovered ? { scale: [1, 1.05, 1], opacity: [0.85, 1, 0.85] } : { scale: [1, 1.03, 1], opacity: [0.7, 0.9, 0.7] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -inset-4 rounded-[2rem] -z-20"
+        className="absolute -inset-6 rounded-full -z-20"
         style={{
           background: "conic-gradient(from 0deg, #BFFF00, #ffffff, #000000, #BFFF00)",
           filter: "blur(18px)",
         }}
       />
 
-      {/* Outer solid lime frame with subtle pulse */}
+      {/* Outer solid lime ring with subtle pulse */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.01, 1] } : { scale: 1 }}
+        animate={hovered ? { scale: [1, 1.02, 1] } : { scale: 1 }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-[2rem] bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+        className="absolute inset-0 rounded-full bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
       >
-        <div className="w-full h-full rounded-[2rem] bg-background p-[3px]">
-          <div className="w-full h-full rounded-[2rem] border border-white/10" />
+        <div className="w-full h-full rounded-full bg-background p-[3px]">
+          <div className="w-full h-full rounded-full border border-white/10" />
         </div>
       </motion.div>
 
       {/* Profile picture container */}
-      <div className="absolute inset-[10px] rounded-[1.7rem] overflow-hidden shadow-3d bg-card">
+      <div className="absolute inset-[10px] rounded-full overflow-hidden shadow-3d bg-card">
         <img
           src={profileImg}
           alt="Sahan Tharuka"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         {/* Professional vignette overlay */}
-        <div className="absolute inset-0 rounded-[1.7rem] bg-gradient-to-t from-background/60 via-background/10 to-transparent" />
-        <div className="absolute inset-0 rounded-[1.7rem] ring-1 ring-inset ring-white/15" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
         {/* Subtle top shine */}
         <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Hover outer glow frame */}
-      <div className="absolute -inset-6 rounded-[2rem] border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
+      {/* Hover outer glow ring */}
+      <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
     </div>
   );
 }
