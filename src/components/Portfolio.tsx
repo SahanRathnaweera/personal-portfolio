@@ -374,13 +374,6 @@ function Card3D() {
         </div>
       </motion.div>
 
-      {/* Subtle rotating dashed orbit ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute -inset-4 rounded-full border border-dashed border-primary/20"
-      />
-
       {/* Profile picture container */}
       <div className="absolute inset-[10px] rounded-full overflow-hidden shadow-3d bg-card">
         <img
