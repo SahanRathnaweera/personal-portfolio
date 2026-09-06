@@ -215,22 +215,24 @@ function Hero() {
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       className="relative min-h-[100svh] flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden"
     >
-      {/* Clean dark professional background */}
-      <div className="absolute inset-0 bg-background" />
+      <HeroVideo />
+
+      {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        <div className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-3xl animate-blob" />
+        <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-secondary/20 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-accent/15 blur-3xl animate-blob" style={{ animationDelay: "8s" }} />
       </div>
 
       <motion.div
         style={{
-          transform: `perspective(1400px) rotateX(${-tilt.y * 1.2}deg) rotateY(${tilt.x * 1.4}deg) translateZ(0)`,
+          transform: `perspective(1400px) rotateX(${-tilt.y * 2.2}deg) rotateY(${tilt.x * 2.6}deg) translateZ(0)`,
           transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
         }}
-        className="relative max-w-7xl mx-auto w-full grid lg:grid-cols-[1fr_1.1fr_1fr] gap-8 items-center"
+        className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center w-full"
       >
-        {/* Left text */}
-        <div className="order-2 lg:order-1 text-center lg:text-left">
+
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -244,9 +246,9 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 text-foreground"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-foreground"
           >
-            I'm{" "}
+            Hi, I'm{" "}
             <span className="text-primary">Sahan</span>
             <br />
             <span className="text-primary">Tharuka</span>
@@ -256,7 +258,7 @@ function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="mb-6 flex items-center justify-center lg:justify-start gap-3"
+            className="mb-4 flex items-center gap-3"
           >
             <span className="h-px w-10 bg-primary" />
             <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
@@ -268,16 +270,16 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
           >
-            Building reliable, maintainable automated testing solutions that improve software quality and release confidence.
+            Computer Science Undergraduate at <b className="text-foreground">NSBM Green University</b> | QA Automation Engineering Enthusiast | Java, Selenium, Cucumber BDD, TestNG, CI/CD, API Testing, RestAssured | IEEE &amp; CSSL
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-3"
+            className="flex flex-wrap gap-3"
           >
             <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
@@ -285,13 +287,16 @@ function Hero() {
             <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
+            <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+              <Mail className="w-4 h-4 text-primary" /> Contact Me
+            </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="flex justify-center lg:justify-start gap-4 mt-8"
+            className="flex gap-4 mt-8"
           >
             <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
@@ -305,47 +310,22 @@ function Hero() {
           </motion.div>
         </div>
 
-        {/* Center profile cutout */}
+        {/* 3D rotating profile card */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
+          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="order-1 lg:order-2 flex justify-center items-end relative"
+          className="perspective-1000 flex justify-center"
         >
-          <ProfileShowcase />
-        </motion.div>
-
-        {/* Right info cards */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="order-3 hidden lg:flex flex-col gap-5"
-        >
-          <InfoCard
-            label="ABOUT ME"
-            title="QA Automation Enthusiast"
-            description="3rd-year Computer Science undergraduate at NSBM Green University with a passion for Quality Engineering and test automation."
-            link="#about"
-            linkText="Learn more"
-          />
-          <InfoCard
-            label="MY WORK"
-            title="Automated Testing Frameworks"
-            description="Hands-on experience with Selenium, Playwright, Cucumber, TestNG, Postman, RestAssured, and JMeter."
-            link="#projects"
-            linkText="Browse projects"
-          />
-          <InfoCard
-            label="FOLLOW ME"
-            title="Let's connect"
-            description="Find me on LinkedIn and GitHub for the latest projects and tech insights."
-            link={LINKEDIN}
-            linkText="Connect on LinkedIn"
-            external
-          />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Card3D />
+          </motion.div>
         </motion.div>
       </motion.div>
+
     </section>
   );
 }
