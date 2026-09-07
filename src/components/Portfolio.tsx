@@ -89,19 +89,21 @@ function Nav() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-black/95 border border-white/10 rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
     >
       <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
         Sahan Tharuka
       </a>
       {links.map(([n, h]) => (
-        <a
+        <motion.a
           key={h}
           href={h}
-          className="px-4 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-white/5"
+          whileHover={{ y: -4, scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300, damping: 18 }}
+          className="px-4 py-1.5 text-sm text-white hover:text-primary transition-colors rounded-full hover:bg-white/5"
         >
           {n}
-        </a>
+        </motion.a>
       ))}
     </motion.nav>
   );
