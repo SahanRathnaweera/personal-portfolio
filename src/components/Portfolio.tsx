@@ -349,28 +349,31 @@ function Card3D() {
       style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transition: "transform .25s cubic-bezier(.22,.61,.36,1)" }}
       className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] group"
     >
-      {/* Premium ambient glow */}
-      <div className="absolute -inset-12 rounded-full bg-primary/10 opacity-40 blur-[80px] -z-20 group-hover:opacity-60 transition duration-700" />
+      {/* Soft ambient glow */}
+      <div className="absolute -inset-14 rounded-full bg-primary/10 opacity-30 blur-[90px] -z-20 group-hover:opacity-50 transition duration-700" />
 
-      {/* Eye-catching yellow + white + black halo behind profile */}
+      {/* Refined lime → white halo (no harsh black) */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.05, 1], opacity: [0.85, 1, 0.85] } : { scale: [1, 1.03, 1], opacity: [0.7, 0.9, 0.7] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -inset-6 rounded-full -z-20"
+        animate={hovered ? { scale: [1, 1.04, 1], opacity: [0.9, 1, 0.9] } : { scale: [1, 1.02, 1], opacity: [0.75, 0.9, 0.75] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -inset-5 rounded-full -z-20"
         style={{
-          background: "conic-gradient(from 0deg, #BFFF00, #ffffff, #000000, #BFFF00)",
-          filter: "blur(18px)",
+          background: "conic-gradient(from 210deg, #BFFF00, #eaffb0, #ffffff, #BFFF00)",
+          filter: "blur(14px)",
         }}
       />
 
-      {/* Outer solid lime ring with subtle pulse */}
+      {/* Elegant thin outer guide ring */}
+      <div className="absolute -inset-3 rounded-full border border-white/10 -z-10" />
+
+      {/* Crisp lime ring with soft glow */}
       <motion.div
-        animate={hovered ? { scale: [1, 1.02, 1] } : { scale: 1 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-primary p-[3px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+        animate={hovered ? { scale: [1, 1.015, 1] } : { scale: 1 }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-primary/80 to-primary p-[2.5px] shadow-[0_0_40px_-6px_rgba(191,255,0,0.45)]"
       >
         <div className="w-full h-full rounded-full bg-background p-[3px]">
-          <div className="w-full h-full rounded-full border border-white/10" />
+          <div className="w-full h-full rounded-full ring-1 ring-white/10" />
         </div>
       </motion.div>
 
@@ -379,17 +382,17 @@ function Card3D() {
         <img
           src={profileImg}
           alt="Sahan Tharuka"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
         {/* Professional vignette overlay */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
         {/* Subtle top shine */}
-        <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-1/4 bg-gradient-to-b from-white/15 to-transparent pointer-events-none" />
       </div>
 
       {/* Hover outer glow ring */}
-      <div className="absolute -inset-8 rounded-full border border-primary/0 group-hover:border-primary/20 transition duration-500 -z-10" />
+      <div className="absolute -inset-7 rounded-full border border-primary/0 group-hover:border-primary/30 transition duration-500 -z-10" />
     </div>
   );
 }
