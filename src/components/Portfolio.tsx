@@ -790,6 +790,7 @@ const PROJECTS = [
 
 function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [imgOk, setImgOk] = useState(true);
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 180, damping: 20 });
@@ -816,12 +817,21 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
       >
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition pointer-events-none" />
         <a href={`${GITHUB}/${p.repo}`} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden">
-          <img
-            src={og(p.repo)}
-            alt={`${p.title} — GitHub repository preview`}
-            loading="lazy"
-            className="w-full aspect-[2/1] object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+          {imgOk ? (
+            <img
+              src={og(p.repo)}
+              alt={`${p.title} — GitHub repository preview`}
+              loading="lazy"
+              decoding="async"
+              onError={() => setImgOk(false)}
+              className="w-full aspect-[2/1] object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full aspect-[2/1] flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary/15 via-transparent to-primary/5">
+              <Github className="w-10 h-10 text-primary/80" />
+              <div className="text-[11px] font-mono text-primary/90 px-5 text-center break-all leading-relaxed">{p.repo}</div>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
           <div className="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-background/70 backdrop-blur border border-primary/30 text-primary">
             PROJECT {String(i + 1).padStart(2, "0")}
