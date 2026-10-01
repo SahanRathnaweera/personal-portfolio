@@ -155,6 +155,11 @@
 }
 
 @layer base {
+  html {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
   * {
     border-color: var(--color-border);
   }

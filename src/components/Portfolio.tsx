@@ -1182,7 +1182,7 @@ function ScrollTop() {
 
 export default function Portfolio() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-clip">
       <QABackground />
       <Nav />
       <AvailableBadge />
