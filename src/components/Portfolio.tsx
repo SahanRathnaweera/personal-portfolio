@@ -573,7 +573,7 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
         transform: `perspective(600px) rotateX(${-tilt.y * 14}deg) rotateY(${tilt.x * 14}deg) translateZ(${tilt.x || tilt.y ? 8 : 0}px)`,
         transformStyle: "preserve-3d",
       }}
-      className={`group glass rounded-2xl ${small ? "p-3" : "p-4"} border border-border flex flex-col items-center justify-center gap-2.5 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+      className={`group box-black rounded-2xl ${small ? "p-3" : "p-4"} flex flex-col items-center justify-center gap-2.5 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
     >
       <div
         className={`${small ? "w-10 h-10" : "w-12 h-12"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-0.5`}
@@ -618,7 +618,7 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
         transform: `perspective(600px) rotateX(${-tilt.y * 16}deg) rotateY(${tilt.x * 16}deg) translateZ(${tilt.x || tilt.y ? 10 : 0}px)`,
         transformStyle: "preserve-3d",
       }}
-      className={`marquee-tile group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default`}
+      className={`marquee-tile group box-black rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default`}
     >
       <div
         className={`${small ? "w-8 h-8" : "w-11 h-11"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
@@ -678,7 +678,7 @@ function Skills() {
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
+              className="box-black rounded-3xl p-8"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -698,7 +698,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
+                className="box-black rounded-3xl p-8 h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -714,7 +714,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
+                className="box-black rounded-3xl p-8 h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -812,7 +812,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
         onMouseLeave={onLeave}
         style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
         whileHover={{ y: -10 }}
-        className="glass rounded-3xl overflow-hidden shadow-3d h-full flex flex-col group relative hover:shadow-glow transition-shadow duration-500"
+        className="box-black rounded-3xl overflow-hidden h-full flex flex-col group relative hover:shadow-glow transition-shadow duration-500"
       >
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition pointer-events-none" />
         <a href={`${GITHUB}/${p.repo}`} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden">
@@ -867,7 +867,7 @@ function Projects() {
           ))}
         </div>
         <Reveal delay={0.4}>
-          <div className="mt-10 text-center glass rounded-2xl p-6 shadow-3d max-w-2xl mx-auto">
+          <div className="mt-10 text-center box-black rounded-2xl p-6 max-w-2xl mx-auto">
             <p className="text-muted-foreground">Explore all of my work on</p>
             <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
               <Github className="w-4 h-4" /> GitHub — SahanRathnaweera
@@ -902,7 +902,7 @@ function Journey() {
             <Reveal key={j.y} delay={i * 0.05}>
               <div className={`relative mb-12 md:grid md:grid-cols-2 md:gap-8 ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}>
                 <div className={`md:text-right ${i % 2 ? "md:text-left" : ""}`}>
-                  <div className="glass rounded-2xl p-6 shadow-3d inline-block max-w-md text-left">
+                  <div className="box-black rounded-2xl p-6 inline-block max-w-md text-left">
                     <div className="font-mono text-xs text-primary mb-1">{j.y}</div>
                     <h3 className="text-xl font-bold mb-2">{j.t}</h3>
                     <p className="text-sm text-muted-foreground">{j.d}</p>
@@ -940,7 +940,7 @@ function Volunteering() {
         <div className="grid md:grid-cols-2 gap-6">
           {VOLUNTEERING.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.1}>
-              <motion.div whileHover={{ y: -6 }} className="glass rounded-3xl p-7 shadow-3d h-full">
+              <motion.div whileHover={{ y: -6 }} className="box-black rounded-3xl p-7 h-full">
                 <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
                   <Heart className="w-5 h-5" />
                 </div>
