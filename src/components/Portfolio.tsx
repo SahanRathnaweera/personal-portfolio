@@ -115,7 +115,7 @@ function AvailableBadge() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.4 }}
-      className="fixed top-6 left-6 z-40 box-black rounded-full px-4 py-2 flex items-center gap-2 shadow-glow"
+      className="fixed top-6 left-6 z-40 box-black rounded-full px-4 py-2 hidden md:flex items-center gap-2 shadow-glow"
     >
       <span className="relative flex h-2.5 w-2.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
@@ -1182,7 +1182,7 @@ function ScrollTop() {
 
 export default function Portfolio() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-clip">
       <QABackground />
       <Nav />
       <AvailableBadge />
