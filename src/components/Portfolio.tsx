@@ -27,7 +27,7 @@ import {
   Zap,
   Heart,
 } from "lucide-react";
-import profileImg from "@/assets/sahan-profile-pro.png";
+import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
@@ -343,7 +343,7 @@ function Card3D() {
         <img
           src={profileImg}
           alt="Sahan Tharuka"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="w-full h-full object-cover object-[center_18%] transition-transform duration-700 ease-out group-hover:scale-105"
         />
         {/* Professional vignette overlay */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/60 via-transparent to-transparent" />
