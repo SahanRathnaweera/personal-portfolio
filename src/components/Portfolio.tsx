@@ -115,7 +115,7 @@ function AvailableBadge() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.4 }}
-      className="fixed top-6 left-6 z-40 glass rounded-full px-4 py-2 flex items-center gap-2 shadow-glow"
+      className="fixed top-6 left-6 z-40 box-black rounded-full px-4 py-2 flex items-center gap-2 shadow-glow"
     >
       <span className="relative flex h-2.5 w-2.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
@@ -197,7 +197,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs"
+            className="inline-flex items-center gap-2 box-black rounded-full px-4 py-1.5 mb-6 text-xs"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-muted-foreground">Computer Science Undergraduate @ NSBM</span>
@@ -245,10 +245,10 @@ function Hero() {
             <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
             </a>
-            <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+            <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
-            <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+            <a href="#contact" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Mail className="w-4 h-4 text-primary" /> Contact Me
             </a>
           </motion.div>
@@ -259,13 +259,13 @@ function Hero() {
             transition={{ delay: 0.7 }}
             className="flex gap-4 mt-8"
           >
-            <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={GITHUB} target="_blank" rel="noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={`mailto:${EMAIL}`} className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>
@@ -375,7 +375,7 @@ function SectionHeader({ kicker, title, subtitle }: { kicker: string; title: str
   return (
     <Reveal>
       <div className="text-center mb-14">
-        <div className="inline-block glass rounded-full px-3 py-1 text-xs font-mono text-primary mb-3">// {kicker}</div>
+        <div className="inline-block box-black rounded-full px-3 py-1 text-xs font-mono text-primary mb-3">// {kicker}</div>
         <h2 className="text-4xl md:text-6xl font-bold mb-3">
           <span className="text-gradient">{title}</span>
         </h2>
@@ -493,7 +493,7 @@ function Experience() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {EXPERIENCES.map((e, i) => (
             <Reveal key={e.title} delay={i * 0.1}>
-              <motion.div whileHover={{ y: -8 }} className="glass rounded-3xl p-6 shadow-3d h-full flex flex-col">
+              <motion.div whileHover={{ y: -8 }} className="box-black rounded-3xl p-6 h-full flex flex-col">
                 {e.img && (
                   <div className="rounded-2xl overflow-hidden mb-4 aspect-video bg-black/40">
                     <img src={e.img} alt={e.title} className={`w-full h-full ${"fit" in e && e.fit === "contain" ? "object-contain" : "object-cover"}`} />
@@ -573,7 +573,7 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
         transform: `perspective(600px) rotateX(${-tilt.y * 14}deg) rotateY(${tilt.x * 14}deg) translateZ(${tilt.x || tilt.y ? 8 : 0}px)`,
         transformStyle: "preserve-3d",
       }}
-      className={`group glass rounded-2xl ${small ? "p-3" : "p-4"} border border-border flex flex-col items-center justify-center gap-2.5 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
+      className={`group box-black rounded-2xl ${small ? "p-3" : "p-4"} flex flex-col items-center justify-center gap-2.5 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default will-change-transform`}
     >
       <div
         className={`${small ? "w-10 h-10" : "w-12 h-12"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-0.5`}
@@ -618,7 +618,7 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
         transform: `perspective(600px) rotateX(${-tilt.y * 16}deg) rotateY(${tilt.x * 16}deg) translateZ(${tilt.x || tilt.y ? 10 : 0}px)`,
         transformStyle: "preserve-3d",
       }}
-      className={`marquee-tile group glass rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 border border-border flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default`}
+      className={`marquee-tile group box-black rounded-2xl ${small ? "px-3 py-2.5 w-28" : "px-4 py-3.5 w-36"} shrink-0 flex flex-col items-center justify-center gap-2 text-center transition-[box-shadow,border-color] duration-300 hover:border-primary/60 hover:shadow-glow cursor-default`}
     >
       <div
         className={`${small ? "w-8 h-8" : "w-11 h-11"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
@@ -678,7 +678,7 @@ function Skills() {
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="glass rounded-3xl p-8 shadow-3d bg-gradient-card"
+              className="box-black rounded-3xl p-8"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -698,7 +698,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
+                className="box-black rounded-3xl p-8 h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -714,7 +714,7 @@ function Skills() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="glass rounded-3xl p-8 shadow-3d bg-gradient-card h-full"
+                className="box-black rounded-3xl p-8 h-full"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -790,6 +790,7 @@ const PROJECTS = [
 
 function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [imgOk, setImgOk] = useState(true);
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 180, damping: 20 });
@@ -812,16 +813,25 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
         onMouseLeave={onLeave}
         style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
         whileHover={{ y: -10 }}
-        className="glass rounded-3xl overflow-hidden shadow-3d h-full flex flex-col group relative hover:shadow-glow transition-shadow duration-500"
+        className="box-black rounded-3xl overflow-hidden h-full flex flex-col group relative hover:shadow-glow transition-shadow duration-500"
       >
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition pointer-events-none" />
         <a href={`${GITHUB}/${p.repo}`} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden">
-          <img
-            src={og(p.repo)}
-            alt={`${p.title} — GitHub repository preview`}
-            loading="lazy"
-            className="w-full aspect-[2/1] object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+          {imgOk ? (
+            <img
+              src={og(p.repo)}
+              alt={`${p.title} — GitHub repository preview`}
+              loading="lazy"
+              decoding="async"
+              onError={() => setImgOk(false)}
+              className="w-full aspect-[2/1] object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full aspect-[2/1] flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary/15 via-transparent to-primary/5">
+              <Github className="w-10 h-10 text-primary/80" />
+              <div className="text-[11px] font-mono text-primary/90 px-5 text-center break-all leading-relaxed">{p.repo}</div>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
           <div className="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-background/70 backdrop-blur border border-primary/30 text-primary">
             PROJECT {String(i + 1).padStart(2, "0")}
@@ -867,7 +877,7 @@ function Projects() {
           ))}
         </div>
         <Reveal delay={0.4}>
-          <div className="mt-10 text-center glass rounded-2xl p-6 shadow-3d max-w-2xl mx-auto">
+          <div className="mt-10 text-center box-black rounded-2xl p-6 max-w-2xl mx-auto">
             <p className="text-muted-foreground">Explore all of my work on</p>
             <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition">
               <Github className="w-4 h-4" /> GitHub — SahanRathnaweera
@@ -902,7 +912,7 @@ function Journey() {
             <Reveal key={j.y} delay={i * 0.05}>
               <div className={`relative mb-12 md:grid md:grid-cols-2 md:gap-8 ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}>
                 <div className={`md:text-right ${i % 2 ? "md:text-left" : ""}`}>
-                  <div className="glass rounded-2xl p-6 shadow-3d inline-block max-w-md text-left">
+                  <div className="box-black rounded-2xl p-6 inline-block max-w-md text-left">
                     <div className="font-mono text-xs text-primary mb-1">{j.y}</div>
                     <h3 className="text-xl font-bold mb-2">{j.t}</h3>
                     <p className="text-sm text-muted-foreground">{j.d}</p>
@@ -940,7 +950,7 @@ function Volunteering() {
         <div className="grid md:grid-cols-2 gap-6">
           {VOLUNTEERING.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.1}>
-              <motion.div whileHover={{ y: -6 }} className="glass rounded-3xl p-7 shadow-3d h-full">
+              <motion.div whileHover={{ y: -6 }} className="box-black rounded-3xl p-7 h-full">
                 <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
                   <Heart className="w-5 h-5" />
                 </div>
@@ -975,7 +985,7 @@ function Credentials() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {CREDS.map((c, i) => (
             <Reveal key={c.t} delay={i * 0.05}>
-              <motion.div whileHover={{ y: -6, rotateX: 4 }} className="glass rounded-2xl p-5 shadow-3d h-full flex flex-col">
+              <motion.div whileHover={{ y: -6, rotateX: 4 }} className="box-black rounded-2xl p-5 h-full flex flex-col">
                 <Award className="w-7 h-7 text-primary mb-3" />
                 <h3 className="font-bold leading-tight mb-1">{c.t}</h3>
                 <div className="text-xs text-muted-foreground mb-4">{c.o}</div>
@@ -1014,7 +1024,7 @@ function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contacts.map((c) => {
                 const Inner = (
-                  <motion.div whileHover={{ y: -4 }} className="glass rounded-2xl p-5 shadow-3d h-full">
+                  <motion.div whileHover={{ y: -4 }} className="box-black rounded-2xl p-5 h-full">
                     <c.i className="w-5 h-5 text-primary mb-3" />
                     <div className="text-xs text-muted-foreground">{c.l}</div>
                     <div className="font-semibold text-sm break-words">{c.v}</div>
@@ -1042,7 +1052,7 @@ function Contact() {
                 window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(String(subject))}&body=${body}`;
                 setSent(true);
               }}
-              className="glass rounded-3xl p-8 shadow-3d space-y-4"
+              className="box-black rounded-3xl p-8 space-y-4"
             >
               <div className="grid sm:grid-cols-2 gap-4">
                 <input required name="name" placeholder="Your name" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
@@ -1086,7 +1096,7 @@ function Footer() {
 
       <div className="relative max-w-6xl mx-auto pt-16 pb-8">
         <Reveal>
-          <div className="glass rounded-3xl p-8 md:p-12 shadow-3d">
+          <div className="box-black rounded-3xl p-8 md:p-12">
             {/* CTA row */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 pb-10 border-b border-border/60">
               <div className="text-left">
@@ -1123,9 +1133,9 @@ function Footer() {
               <div>
                 <div className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-4">Connect</div>
                 <div className="flex gap-3">
-                  <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Github className="w-5 h-5" /></a>
-                  <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Linkedin className="w-5 h-5" /></a>
-                  <a href={`mailto:${EMAIL}`} aria-label="Email" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Mail className="w-5 h-5" /></a>
+                  <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Github className="w-5 h-5" /></a>
+                  <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Linkedin className="w-5 h-5" /></a>
+                  <a href={`mailto:${EMAIL}`} aria-label="Email" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Mail className="w-5 h-5" /></a>
                 </div>
               </div>
             </div>
