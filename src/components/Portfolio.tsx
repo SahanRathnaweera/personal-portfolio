@@ -115,7 +115,7 @@ function AvailableBadge() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.4 }}
-      className="fixed top-6 left-6 z-40 glass rounded-full px-4 py-2 flex items-center gap-2 shadow-glow"
+      className="fixed top-6 left-6 z-40 box-black rounded-full px-4 py-2 flex items-center gap-2 shadow-glow"
     >
       <span className="relative flex h-2.5 w-2.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
@@ -197,7 +197,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs"
+            className="inline-flex items-center gap-2 box-black rounded-full px-4 py-1.5 mb-6 text-xs"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-muted-foreground">Computer Science Undergraduate @ NSBM</span>
@@ -245,10 +245,10 @@ function Hero() {
             <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> Download CV
             </a>
-            <a href="#projects" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+            <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
-            <a href="#contact" className="glass px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+            <a href="#contact" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Mail className="w-4 h-4 text-primary" /> Contact Me
             </a>
           </motion.div>
@@ -259,13 +259,13 @@ function Hero() {
             transition={{ delay: 0.7 }}
             className="flex gap-4 mt-8"
           >
-            <a href={GITHUB} target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={GITHUB} target="_blank" rel="noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href={`mailto:${EMAIL}`} className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={`mailto:${EMAIL}`} className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>
@@ -375,7 +375,7 @@ function SectionHeader({ kicker, title, subtitle }: { kicker: string; title: str
   return (
     <Reveal>
       <div className="text-center mb-14">
-        <div className="inline-block glass rounded-full px-3 py-1 text-xs font-mono text-primary mb-3">// {kicker}</div>
+        <div className="inline-block box-black rounded-full px-3 py-1 text-xs font-mono text-primary mb-3">// {kicker}</div>
         <h2 className="text-4xl md:text-6xl font-bold mb-3">
           <span className="text-gradient">{title}</span>
         </h2>
@@ -493,7 +493,7 @@ function Experience() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {EXPERIENCES.map((e, i) => (
             <Reveal key={e.title} delay={i * 0.1}>
-              <motion.div whileHover={{ y: -8 }} className="glass rounded-3xl p-6 shadow-3d h-full flex flex-col">
+              <motion.div whileHover={{ y: -8 }} className="box-black rounded-3xl p-6 h-full flex flex-col">
                 {e.img && (
                   <div className="rounded-2xl overflow-hidden mb-4 aspect-video bg-black/40">
                     <img src={e.img} alt={e.title} className={`w-full h-full ${"fit" in e && e.fit === "contain" ? "object-contain" : "object-cover"}`} />
