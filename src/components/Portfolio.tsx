@@ -975,7 +975,7 @@ function Credentials() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {CREDS.map((c, i) => (
             <Reveal key={c.t} delay={i * 0.05}>
-              <motion.div whileHover={{ y: -6, rotateX: 4 }} className="glass rounded-2xl p-5 shadow-3d h-full flex flex-col">
+              <motion.div whileHover={{ y: -6, rotateX: 4 }} className="box-black rounded-2xl p-5 h-full flex flex-col">
                 <Award className="w-7 h-7 text-primary mb-3" />
                 <h3 className="font-bold leading-tight mb-1">{c.t}</h3>
                 <div className="text-xs text-muted-foreground mb-4">{c.o}</div>
@@ -1014,7 +1014,7 @@ function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contacts.map((c) => {
                 const Inner = (
-                  <motion.div whileHover={{ y: -4 }} className="glass rounded-2xl p-5 shadow-3d h-full">
+                  <motion.div whileHover={{ y: -4 }} className="box-black rounded-2xl p-5 h-full">
                     <c.i className="w-5 h-5 text-primary mb-3" />
                     <div className="text-xs text-muted-foreground">{c.l}</div>
                     <div className="font-semibold text-sm break-words">{c.v}</div>
@@ -1042,7 +1042,7 @@ function Contact() {
                 window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(String(subject))}&body=${body}`;
                 setSent(true);
               }}
-              className="glass rounded-3xl p-8 shadow-3d space-y-4"
+              className="box-black rounded-3xl p-8 space-y-4"
             >
               <div className="grid sm:grid-cols-2 gap-4">
                 <input required name="name" placeholder="Your name" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
@@ -1086,7 +1086,7 @@ function Footer() {
 
       <div className="relative max-w-6xl mx-auto pt-16 pb-8">
         <Reveal>
-          <div className="glass rounded-3xl p-8 md:p-12 shadow-3d">
+          <div className="box-black rounded-3xl p-8 md:p-12">
             {/* CTA row */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 pb-10 border-b border-border/60">
               <div className="text-left">
@@ -1123,9 +1123,9 @@ function Footer() {
               <div>
                 <div className="text-xs font-mono tracking-widest uppercase text-muted-foreground mb-4">Connect</div>
                 <div className="flex gap-3">
-                  <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Github className="w-5 h-5" /></a>
-                  <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Linkedin className="w-5 h-5" /></a>
-                  <a href={`mailto:${EMAIL}`} aria-label="Email" className="glass p-3 rounded-full hover:scale-110 hover:text-primary transition"><Mail className="w-5 h-5" /></a>
+                  <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Github className="w-5 h-5" /></a>
+                  <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Linkedin className="w-5 h-5" /></a>
+                  <a href={`mailto:${EMAIL}`} aria-label="Email" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition"><Mail className="w-5 h-5" /></a>
                 </div>
               </div>
             </div>
