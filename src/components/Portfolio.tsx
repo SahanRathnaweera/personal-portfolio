@@ -964,14 +964,35 @@ function Volunteering() {
         <SectionHeader kicker="volunteering" title="Giving Back" />
         <div className="grid md:grid-cols-2 gap-6">
           {VOLUNTEERING.map((v, i) => (
-            <Reveal key={v.title} delay={i * 0.1}>
+            <Reveal key={v.title} delay={i * 0.1} className={v.feature ? "md:col-span-2" : ""}>
               <motion.div whileHover={{ y: -6 }} className="box-black rounded-3xl p-7 h-full">
-                <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
-                  <Heart className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-bold mb-1">{v.title}</h3>
-                <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                {v.feature && v.img ? (
+                  <div className="grid md:grid-cols-[1.15fr_1fr] gap-7 items-center">
+                    <div className="rounded-2xl overflow-hidden aspect-video bg-black/40 border border-primary/20">
+                      <img src={v.img} alt={v.title} loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <div className="inline-flex items-center gap-1.5 text-xs font-mono text-primary box-black rounded-full px-3 py-1 mb-4">
+                        <Sparkles className="w-3.5 h-3.5" /> Featured initiative
+                      </div>
+                      <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
+                        <Heart className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-1">{v.title}</h3>
+                      <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
+                      <Heart className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-1">{v.title}</h3>
+                    <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                  </>
+                )}
               </motion.div>
             </Reveal>
           ))}
