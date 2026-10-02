@@ -26,12 +26,14 @@ import {
   Target,
   Zap,
   Heart,
+  Sparkles,
 } from "lucide-react";
 import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
+import technovacImg from "@/assets/Technovac-3.1.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 
@@ -358,9 +360,10 @@ function Card3D() {
   );
 }
 
-function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -929,7 +932,20 @@ function Journey() {
   );
 }
 
-const VOLUNTEERING = [
+const VOLUNTEERING: {
+  title: string;
+  org: string;
+  desc: string;
+  img?: string;
+  feature?: boolean;
+}[] = [
+  {
+    title: "Executive Committee Member — Volunteering & Media Supporter",
+    org: "IEEE Computer Society Student Branch Chapter of NSBM",
+    img: technovacImg,
+    feature: true,
+    desc: "Our IEEE Computer Society Student Branch Chapter hosted TechnoVac 3.1 on 24 September 2026 at the Faculty of Computing, NSBM, introducing undergraduates to open-source contribution. The session was led by Mr. Anuradha Weeraman — Technologist, Software Architect & Founder — who shared practical insights on the open-source ecosystem and donated the book Free Software, Free Society (Selected Essays of Richard M. Stallman) to the NSBM University Library. We explored open-source practices, Git & GitHub workflows and collaboration, giving students a clear first step towards becoming real contributors.",
+  },
   {
     title: "Team Lead | OpenDay",
     org: "IEEE Computer Society Student Branch Chapter of NSBM",
@@ -949,14 +965,35 @@ function Volunteering() {
         <SectionHeader kicker="volunteering" title="Giving Back" />
         <div className="grid md:grid-cols-2 gap-6">
           {VOLUNTEERING.map((v, i) => (
-            <Reveal key={v.title} delay={i * 0.1}>
+            <Reveal key={v.title} delay={i * 0.1} className={v.feature ? "md:col-span-2" : ""}>
               <motion.div whileHover={{ y: -6 }} className="box-black rounded-3xl p-7 h-full">
-                <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
-                  <Heart className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-bold mb-1">{v.title}</h3>
-                <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                {v.feature && v.img ? (
+                  <div className="grid md:grid-cols-[1.15fr_1fr] gap-7 items-center">
+                    <div className="rounded-2xl overflow-hidden bg-black/40 border border-primary/20">
+                      <img src={v.img} alt={v.title} loading="lazy" className="w-full h-auto block" />
+                    </div>
+                    <div>
+                      <div className="inline-flex items-center gap-1.5 text-xs font-mono text-primary box-black rounded-full px-3 py-1 mb-4">
+                        <Sparkles className="w-3.5 h-3.5" /> Featured initiative
+                      </div>
+                      <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
+                        <Heart className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-1">{v.title}</h3>
+                      <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
+                      <Heart className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-1">{v.title}</h3>
+                    <div className="text-sm text-muted-foreground mb-3">{v.org}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+                  </>
+                )}
               </motion.div>
             </Reveal>
           ))}
