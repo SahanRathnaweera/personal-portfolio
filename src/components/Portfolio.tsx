@@ -32,6 +32,7 @@ import ieeeImg from "@/assets/ieee-experience.jpg";
 import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
+import technovacImg from "@/assets/Technovac-3.1.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 
@@ -358,9 +359,10 @@ function Card3D() {
   );
 }
 
-function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -929,7 +931,20 @@ function Journey() {
   );
 }
 
-const VOLUNTEERING = [
+const VOLUNTEERING: {
+  title: string;
+  org: string;
+  desc: string;
+  img?: string;
+  feature?: boolean;
+}[] = [
+  {
+    title: "Executive Committee Member — Volunteering & Media Supporter",
+    org: "IEEE Computer Society Student Branch Chapter of NSBM",
+    img: technovacImg,
+    feature: true,
+    desc: "Our IEEE Computer Society Student Branch Chapter hosted TechnoVac 3.1 on 24 September 2026 at the Faculty of Computing, NSBM, introducing undergraduates to open-source contribution. The session was led by Mr. Anuradha Weeraman — Technologist, Software Architect & Founder — who shared practical insights on the open-source ecosystem and donated the book Free Software, Free Society (Selected Essays of Richard M. Stallman) to the NSBM University Library. We explored open-source practices, Git & GitHub workflows and collaboration, giving students a clear first step towards becoming real contributors.",
+  },
   {
     title: "Team Lead | OpenDay",
     org: "IEEE Computer Society Student Branch Chapter of NSBM",
