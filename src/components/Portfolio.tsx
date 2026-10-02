@@ -969,8 +969,8 @@ function Volunteering() {
               <motion.div whileHover={{ y: -6 }} className="box-black rounded-3xl p-7 h-full">
                 {v.feature && v.img ? (
                   <div className="grid md:grid-cols-[1.15fr_1fr] gap-7 items-center">
-                    <div className="rounded-2xl overflow-hidden aspect-video bg-black/40 border border-primary/20">
-                      <img src={v.img} alt={v.title} loading="lazy" className="w-full h-full object-cover object-top" />
+                    <div className="rounded-2xl overflow-hidden bg-black/40 border border-primary/20">
+                      <img src={v.img} alt={v.title} loading="lazy" className="w-full h-auto block" />
                     </div>
                     <div>
                       <div className="inline-flex items-center gap-1.5 text-xs font-mono text-primary box-black rounded-full px-3 py-1 mb-4">
