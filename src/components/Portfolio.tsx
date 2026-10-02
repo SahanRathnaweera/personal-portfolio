@@ -973,9 +973,6 @@ function Volunteering() {
                       <img src={v.img} alt={v.title} loading="lazy" className="w-full h-auto block" />
                     </div>
                     <div>
-                      <div className="inline-flex items-center gap-1.5 text-xs font-mono text-primary box-black rounded-full px-3 py-1 mb-4">
-                        <Sparkles className="w-3.5 h-3.5" /> Featured initiative
-                      </div>
                       <div className="w-12 h-12 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-4">
                         <Heart className="w-5 h-5" />
                       </div>
