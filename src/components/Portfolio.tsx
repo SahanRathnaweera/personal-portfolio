@@ -893,7 +893,7 @@ const JOURNEY = [
   { y: "2025", t: "Learning Programming", d: "Started my journey with Java, Python and core CS fundamentals at NSBM Green University." },
   { y: "2026 · Apr", t: "Discovered Automation", d: "Fell in love with QA and automation testing. Started exploring Selenium WebDriver." },
   { y: "2026 · May", t: "Built Selenium Projects", d: "Designed multiple hybrid Selenium frameworks using POM, TestNG and Cucumber BDD." },
-  { y: "2026 · Jun", t: "API Automation Mastery", d: "Deep-dived into REST Assured, Postman and modern CI/CD with Jenkins." },
+  { y: "2026 · Jun", t: "API Automation Mastery", d: "Deep-dived into REST Assured, Postman and modern CI/CD with GitHub" },
   { y: "2026 · End", t: "Software Tester", d: "Aiming for an internship and a long-term career as a QA Automation Engineer." },
 ];
 
