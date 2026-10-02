@@ -26,6 +26,7 @@ import {
   Target,
   Zap,
   Heart,
+  Sparkles,
 } from "lucide-react";
 import profileImg from "@/assets/sahan-profile.jpg";
 import ieeeImg from "@/assets/ieee-experience.jpg";
