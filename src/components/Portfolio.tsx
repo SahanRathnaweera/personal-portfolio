@@ -238,7 +238,7 @@ function Hero() {
             transition={{ delay: 0.4 }}
             className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
           >
-            Computer Science Undergraduate at <b className="text-foreground">NSBM Green University</b> | QA Automation Engineering Enthusiast | Java, Selenium, Cucumber BDD, TestNG, CI/CD, API Testing, RestAssured | IEEE &amp; CSSL
+            Software Test Automation | AI-Assisted Software Development | Quality Engineering | Computer Science Undergraduate | IEEE &amp; CSSL
           </motion.p>
 
           <motion.div
