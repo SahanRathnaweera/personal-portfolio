@@ -226,8 +226,9 @@ function Hero() {
             className="mb-4 flex items-center gap-3"
           >
             <span className="h-px w-10 bg-primary" />
-            <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
-              QA Automation Engineer
+            <span className="block text-lg md:text-xl font-semibold tracking-wide text-secondary min-h-[1.6em] whitespace-nowrap">
+              {typed}
+              <span className="inline-block w-[2px] h-[1.1em] bg-primary align-middle ml-1 animate-pulse" aria-hidden="true" />
             </span>
           </motion.div>
 
