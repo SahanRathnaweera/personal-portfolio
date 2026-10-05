@@ -40,10 +40,11 @@ const heroVideoUrl = "/hero-bg.mp4";
 
 const ROLES = [
   "QA Automation Engineer",
-  "Software Tester",
-  "Manual Tester",
+  "Software Test Automation Engineer",
+  "AI-Assisted Software Developer",
+  "QA Engineer",
   "API Tester",
-  "Quality Engineer",
+  "Performance Tester",
 ];
 
 const LINKEDIN = "https://www.linkedin.com/in/sahan-tharuka-28066436b/";
@@ -167,6 +168,7 @@ function HeroVideo() {
 
 function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const typed = useTyping(ROLES);
   return (
     <section
       id="hero"
@@ -224,8 +226,9 @@ function Hero() {
             className="mb-4 flex items-center gap-3"
           >
             <span className="h-px w-10 bg-primary" />
-            <span className="text-lg md:text-xl font-semibold tracking-wide text-secondary">
-              QA Automation Engineer
+            <span className="block text-lg md:text-xl font-semibold tracking-wide text-secondary min-h-[1.6em] whitespace-nowrap">
+              {typed}
+              <span className="inline-block w-[2px] h-[1.1em] bg-primary align-middle ml-1 animate-pulse" aria-hidden="true" />
             </span>
           </motion.div>
 
