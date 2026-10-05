@@ -40,10 +40,11 @@ const heroVideoUrl = "/hero-bg.mp4";
 
 const ROLES = [
   "QA Automation Engineer",
-  "Software Tester",
-  "Manual Tester",
+  "Software Test Automation Engineer",
+  "AI-Assisted Software Developer",
+  "QA Engineer",
   "API Tester",
-  "Quality Engineer",
+  "Performance Tester",
 ];
 
 const LINKEDIN = "https://www.linkedin.com/in/sahan-tharuka-28066436b/";
@@ -167,6 +168,7 @@ function HeroVideo() {
 
 function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const typed = useTyping(ROLES);
   return (
     <section
       id="hero"
