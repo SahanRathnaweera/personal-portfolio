@@ -244,8 +244,11 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="#contact" className="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
-              <Download className="w-4 h-4" /> Download CV
+            <a href="/cv/SQA-Engineer-CV.pdf" download className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+              <Download className="w-4 h-4" /> SQA Engineer CV
+            </a>
+            <a href="/cv/AI-Assisted-SE-CV.pdf" download className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+              <Download className="w-4 h-4" /> AI-Assisted SE CV
             </a>
             <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
