@@ -416,19 +416,19 @@ function About() {
           >
             <div className="box-black rounded-3xl p-8 space-y-5 text-base md:text-lg leading-relaxed">
               <p>
-                I’m a <b className="text-gradient">3rd-year Computer Science undergraduate</b> at <b>NSBM Green University</b> (GPA: 3.68/4.0), with a self-driven interest in <b className="text-primary">Quality Engineering</b> and <b className="text-primary">Test Automation</b>.
+                I’m a <b className="text-gradient">3rd-year Computer Science undergraduate</b> at <b>NSBM Green University</b> (GPA: 3.68/4.0) with a strong interest in <b className="text-primary">Quality Engineering</b>, <b className="text-primary">Test Automation</b>, and <b className="text-primary">AI-Assisted Software Engineering</b>.
               </p>
               <p className="text-muted-foreground">
-                I’m passionate about building reliable and maintainable automated testing solutions that improve software quality and release confidence. My experience includes <mark className="bg-primary/20 text-primary px-1.5 rounded">Playwright (TypeScript)</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Selenium WebDriver (Java)</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Cucumber</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TestNG</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">POM</mark>, REST API Testing, Postman, RestAssured, and JMeter.
+                I enjoy building reliable software and improving its quality through automation, modern development practices, and AI-assisted workflows. My technical experience includes <mark className="bg-primary/20 text-primary px-1.5 rounded">Java</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TypeScript</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Playwright</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Selenium</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Cucumber</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TestNG</mark>, REST API Testing, Postman, RestAssured, JMeter, Git/GitHub, GitHub Actions, CI/CD, and Docker basics.
               </p>
               <p className="text-muted-foreground">
-                I also have hands-on experience with Git/GitHub, GitHub Actions, CI/CD, Docker basics, Jira, and Agile/Scrum practices, with a strong understanding of STLC and test case design.
+                I’m particularly interested in creating software that is not only functional, but also testable, maintainable, and reliable.
               </p>
               <p className="text-muted-foreground">
-                Beyond academics, I contribute to the tech community as a <b>Media Coordinator</b> of the IEEE Computer Society Student Branch Chapter and <b>Logistics Lead</b> for Duothan 6.0 at NSBM.
+                Beyond coding and testing, I actively contribute to the tech community through <b>IEEE Computer Society</b> and <b>NSBM student activities</b>.
               </p>
               <p className="text-primary font-semibold">
-                Seeking Quality Engineering / QA Automation Internship opportunities for late 2026 / 2027.
+                🎯 Open to Software Engineering and Quality Engineering / QA Automation Internship opportunities for late 2026 / 2027.
               </p>
               <div className="flex flex-wrap gap-3 pt-3">
                 <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
