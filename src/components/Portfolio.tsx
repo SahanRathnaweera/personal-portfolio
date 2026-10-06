@@ -803,6 +803,16 @@ const PROJECTS = [
       "Non-GUI CLI load execution with detailed HTML dashboard reports for throughput, latency and error rates.",
     ],
   },
+  {
+    title: "Zentro — Full-Stack Clothing E-Commerce Platform",
+    repo: "zentro-ecommerce",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Spring Boot", "MySQL", "JWT"],
+    bullets: [
+      "Full-stack clothing e-commerce platform covering Men's, Ladies and Kids fashion.",
+      "Frontend built with React, TypeScript, Tailwind CSS and Vite, using React Router.",
+      "Backend REST API with Spring Boot, Spring Data JPA, Spring Security and JWT authentication on a MySQL database.",
+    ],
+  },
 ];
 
 function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
