@@ -23,7 +23,6 @@ import {
   Send,
   CheckCircle2,
   Rocket,
-  Target,
   Zap,
   Heart,
   Sparkles,
@@ -432,7 +431,6 @@ function About() {
               </p>
               <div className="flex flex-wrap gap-3 pt-3">
                 <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> BSc in CS, NSBM</span>
-                <span className="box-black px-4 py-2 rounded-full text-sm flex items-center gap-2"><Target className="w-4 h-4 text-accent" /> QA Automation Focus</span>
               </div>
             </div>
           </motion.div>
