@@ -556,6 +556,14 @@ const SKILLS_TECH = [
   { n: "Jira", logo: "https://cdn.simpleicons.org/jira" },
   { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
   { n: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
+  { n: "IntelliJ IDEA", logo: "https://cdn.simpleicons.org/intellijidea" },
+  { n: "React", logo: "https://cdn.simpleicons.org/react" },
+  { n: "Vite", logo: "https://cdn.simpleicons.org/vite" },
+  { n: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
+  { n: "Vercel", logo: "https://cdn.simpleicons.org/vercel/FFFFFF" },
+  { n: "TailwindCSS", logo: "https://cdn.simpleicons.org/tailwindcss" },
+  { n: "MERN Stack", icon: "mern" },
 ];
 
 
