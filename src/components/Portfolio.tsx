@@ -564,7 +564,9 @@ const SKILLS_TECH = [
   { n: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
   { n: "Vercel", logo: "https://cdn.simpleicons.org/vercel/FFFFFF" },
   { n: "TailwindCSS", logo: "https://cdn.simpleicons.org/tailwindcss" },
-  { n: "MERN Stack", icon: "mern" },
+  { n: "MongoDB", logo: "https://cdn.simpleicons.org/mongodb" },
+  { n: "Express.js", logo: "https://cdn.simpleicons.org/express/FFFFFF" },
+  { n: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/FFFFFF" },
 ];
 
 
