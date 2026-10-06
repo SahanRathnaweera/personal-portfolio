@@ -1008,9 +1008,9 @@ function Volunteering() {
 
 const CREDS = [
   { t: "API Testing Learning Path", o: "Postman · 2026", l: "https://verify.skilljar.com/c/t457kryrimsp" },
-  { t: "Basics of Data Structures and Algorithms", o: "LinkedIn" },
+  { t: "Basics of Data Structures and Algorithms", o: "LinkedIn", l: "https://simpli-web.app.link/e/fUtfrAxD06b" },
   { t: "Agile Project Management", o: "HP LIFE · 2026", l: "https://www.life-global.org/certificate/aefbfbb3-2050-4d56-9bd9-7932734a3c40" },
-  { t: "HP LIFE Ambassador", o: "HP LIFE" },
+  { t: "HP LIFE Ambassador", o: "HP LIFE", l: "https://www.life-global.org/en/badges/f879a80f-0b1d-4612-bd2c-8013c6951be1" },
   { t: "Continuous Integration with Jenkins", o: "Applitools · 2026", l: "https://us-central1-testautomationu-9e0b6.cloudfunctions.net/app/sharable/aa3c61bc" },
   { t: "API Test Automation with Postman", o: "TestAutomationU · 2026", l: "https://us-central1-testautomationu-9e0b6.cloudfunctions.net/app/sharable/6a9b5d85" },
   { t: "Introduction to Amazon Q Developer (Technical)", o: "AWS · 2026" },
