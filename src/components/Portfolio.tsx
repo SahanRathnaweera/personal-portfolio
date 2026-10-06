@@ -17,6 +17,7 @@ import {
   Terminal,
   FlaskConical,
   Braces,
+  Layers,
   Award,
   Briefcase,
   GraduationCap,
@@ -556,6 +557,14 @@ const SKILLS_TECH = [
   { n: "Jira", logo: "https://cdn.simpleicons.org/jira" },
   { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
   { n: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
+  { n: "IntelliJ IDEA", logo: "https://cdn.simpleicons.org/intellijidea" },
+  { n: "React", logo: "https://cdn.simpleicons.org/react" },
+  { n: "Vite", logo: "https://cdn.simpleicons.org/vite" },
+  { n: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
+  { n: "Vercel", logo: "https://cdn.simpleicons.org/vercel/FFFFFF" },
+  { n: "TailwindCSS", logo: "https://cdn.simpleicons.org/tailwindcss" },
+  { n: "MERN Stack", icon: "mern" },
 ];
 
 
@@ -595,6 +604,8 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
           />
         ) : s.icon === "testng" ? (
           <FlaskConical className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
+        ) : s.icon === "mern" ? (
+          <Layers className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
         ) : (
           <Braces className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
         )}
@@ -635,6 +646,8 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
           <img src={s.logo} alt={s.n} loading="lazy" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
         ) : s.icon === "testng" ? (
           <FlaskConical className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
+        ) : s.icon === "mern" ? (
+          <Layers className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
         ) : (
           <Braces className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
         )}
