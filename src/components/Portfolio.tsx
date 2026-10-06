@@ -17,6 +17,7 @@ import {
   Terminal,
   FlaskConical,
   Braces,
+  Layers,
   Award,
   Briefcase,
   GraduationCap,
