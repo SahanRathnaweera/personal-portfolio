@@ -604,6 +604,8 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
           />
         ) : s.icon === "testng" ? (
           <FlaskConical className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
+        ) : s.icon === "mern" ? (
+          <Layers className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
         ) : (
           <Braces className="w-9 h-9 text-primary drop-shadow-[0_4px_10px_rgba(191,255,0,0.3)]" />
         )}
