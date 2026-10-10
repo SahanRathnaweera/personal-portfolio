@@ -33,7 +33,6 @@ import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
 import technovacImg from "@/assets/Technovac-3.1.jpg";
-import qaEngineerCv from "@/assets/qa-engineer-cv.asset.json";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 
@@ -247,7 +246,7 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href={qaEngineerCv.url} download="Sahan_Tharuka_QA_Intern_CV.pdf" className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="/cv/Sahan_Tharuka_QA_Intern_CV.pdf" download="Sahan_Tharuka_QA_Intern_CV.pdf" className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> QA Engineer CV
             </a>
             <a href="/cv/AI-Assisted-SE-CV.pdf" download className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
