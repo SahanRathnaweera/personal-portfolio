@@ -860,7 +860,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
         <a href={`${GITHUB}/${p.repo}`} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden">
           {imgOk ? (
             <img
-              src={og(p.repo)}
+              src={p.img ?? og(p.repo)}
               alt={`${p.title} — GitHub repository preview`}
               loading="lazy"
               decoding="async"
