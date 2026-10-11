@@ -817,6 +817,8 @@ const PROJECTS: Project[] = [
   {
     title: "Zentro — Full-Stack Clothing E-Commerce Platform",
     repo: "zentro-ecommerce",
+    img: zentroImg,
+    demo: zentroDemoUrl,
     stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Spring Boot", "MySQL", "JWT"],
     bullets: [
       "Full-stack clothing e-commerce platform covering Men's, Ladies and Kids fashion.",
