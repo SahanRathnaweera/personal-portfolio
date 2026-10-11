@@ -893,16 +893,67 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
               <span key={s} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-md bg-primary/10 text-primary border border-primary/20">{s}</span>
             ))}
           </div>
-          <a
-            href={`${GITHUB}/${p.repo}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group-hover:shadow-glow"
-          >
-            <Github className="w-4 h-4" /> View GitHub Repository
-          </a>
+          <div className="mt-auto flex flex-col sm:flex-row gap-2.5">
+            {p.demo && (
+              <button
+                type="button"
+                onClick={() => setDemoOpen(true)}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground hover:scale-[1.03] transition-transform duration-300 shadow-glow"
+              >
+                <Zap className="w-4 h-4" /> View Demo
+              </button>
+            )}
+            <a
+              href={`${GITHUB}/${p.repo}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              <Github className="w-4 h-4" /> View GitHub Repository
+            </a>
+          </div>
         </div>
       </motion.div>
+      <AnimatePresence>
+        {demoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setDemoOpen(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 220, damping: 24 }}
+              onClick={(e) => e.stopPropagation()}
+              className="box-black rounded-3xl w-full max-w-4xl overflow-hidden"
+            >
+              <div className="flex items-center justify-between px-5 py-3 border-b border-primary/20">
+                <div className="text-sm font-semibold text-primary truncate">{p.title} — Live Demo</div>
+                <button
+                  type="button"
+                  onClick={() => setDemoOpen(false)}
+                  aria-label="Close demo"
+                  className="shrink-0 ml-3 w-8 h-8 rounded-full border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
+                >
+                  ✕
+                </button>
+              </div>
+              <video
+                src={p.demo}
+                controls
+                autoPlay
+                loop
+                playsInline
+                className="w-full aspect-video bg-black"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Reveal>
   );
 }
