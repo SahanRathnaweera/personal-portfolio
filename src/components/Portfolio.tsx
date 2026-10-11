@@ -673,7 +673,7 @@ function LogoMarquee({
       viewport={{ once: true, amount: 0.3 }}
       transition={{ delay, type: "spring", stiffness: 150, damping: 18 }}
       style={{ perspective: 1000 }}
-      className="marquee-mask overflow-hidden py-2 group/marquee"
+      className="marquee-mask min-w-0 overflow-hidden py-2 group/marquee"
     >
       <div
         className="flex gap-3 w-max animate-marquee group-hover/marquee:[animation-play-state:paused]"
@@ -697,7 +697,7 @@ function Skills() {
             <motion.div
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="box-black rounded-3xl p-8"
+              className="box-black rounded-3xl p-5 md:p-8"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -713,11 +713,11 @@ function Skills() {
           </Reveal>
 
           <div className="grid lg:grid-cols-2 gap-6">
-            <Reveal delay={0.1}>
+            <Reveal delay={0.1} className="min-w-0">
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="box-black rounded-3xl p-8 h-full"
+                className="box-black rounded-3xl p-5 md:p-8 h-full min-w-0"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
@@ -729,11 +729,11 @@ function Skills() {
               </motion.div>
             </Reveal>
 
-            <Reveal delay={0.2}>
+            <Reveal delay={0.2} className="min-w-0">
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="box-black rounded-3xl p-8 h-full"
+                className="box-black rounded-3xl p-5 md:p-8 h-full min-w-0"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-13 h-13 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow">
