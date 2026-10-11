@@ -831,6 +831,7 @@ const PROJECTS: Project[] = [
 function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [imgOk, setImgOk] = useState(true);
+  const [demoOpen, setDemoOpen] = useState(false);
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 180, damping: 20 });
