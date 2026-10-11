@@ -947,6 +947,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
                 controls
                 autoPlay
                 loop
+                muted
                 playsInline
                 className="w-full aspect-video bg-black"
               />
