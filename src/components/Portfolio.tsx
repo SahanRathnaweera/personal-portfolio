@@ -34,6 +34,7 @@ import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
 import technovacImg from "@/assets/Technovac-3.1.jpg";
 import zentroImg from "@/assets/zentro.jpg";
+import blazeDemoImg from "@/assets/blazedemo.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
@@ -807,6 +808,7 @@ const PROJECTS: Project[] = [
   {
     title: "Web Application Performance & Load Testing Framework",
     repo: "BlazeDemo-Performance-Testing",
+    img: blazeDemoImg,
     stack: ["Apache JMeter", "CSV Data-Driven", "Non-GUI CLI", "HTML Reporting"],
     bullets: [
       "End-to-end performance suite with JMeter for the BlazeDemo flight booking application.",
