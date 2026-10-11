@@ -850,6 +850,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
     <Reveal delay={i * 0.08}>
       <motion.div
         ref={ref}
+        ref={ref}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
         style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
