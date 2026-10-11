@@ -33,8 +33,10 @@ import csslImg from "@/assets/CSSL.jpeg";
 import jamborieeeImg from "@/assets/Jamborieee.jpeg";
 import duothanImg from "@/assets/Duothan.jpeg";
 import technovacImg from "@/assets/Technovac-3.1.jpg";
+import zentroImg from "@/assets/zentro.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
+const zentroDemoUrl = "/zentro-demo.mp4";
 
 
 const ROLES = [
@@ -751,7 +753,16 @@ function Skills() {
 
 const og = (repo: string) => `https://opengraph.githubassets.com/1/SahanRathnaweera/${repo}`;
 
-const PROJECTS = [
+type Project = {
+  title: string;
+  repo: string;
+  stack: string[];
+  bullets: string[];
+  img?: string;
+  demo?: string;
+};
+
+const PROJECTS: Project[] = [
   {
     title: "E-Commerce Web Automation Testing Framework",
     repo: "Ecommerce-Automation-Framework",
