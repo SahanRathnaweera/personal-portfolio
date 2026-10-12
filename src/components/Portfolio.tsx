@@ -37,6 +37,7 @@ import zentroImg from "@/assets/zentro.jpg";
 import blazeDemoImg from "@/assets/blazedemo.jpg";
 import jiraImg from "@/assets/Jira.jpg";
 import ecommerceImg from "@/assets/ecommerce-manual.jpg";
+import apiImg from "@/assets/api-testing.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
@@ -781,6 +782,7 @@ const PROJECTS: Project[] = [
   {
     title: "Restful-Booker API Automation & CI/CD Framework",
     repo: "restful-booker-postman-automation",
+    img: apiImg,
     stack: ["Postman", "JavaScript", "Newman", "GitHub Actions"],
     bullets: [
       "Fully automated API testing framework using Postman and JavaScript.",
