@@ -36,6 +36,7 @@ import technovacImg from "@/assets/Technovac-3.1.jpg";
 import zentroImg from "@/assets/zentro.jpg";
 import blazeDemoImg from "@/assets/blazedemo.jpg";
 import jiraImg from "@/assets/Jira.jpg";
+import ecommerceImg from "@/assets/ecommerce-manual.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
@@ -768,6 +769,7 @@ const PROJECTS: Project[] = [
   {
     title: "E-Commerce Web Automation Testing Framework",
     repo: "Ecommerce-Automation-Framework",
+    img: ecommerceImg,
     stack: ["Selenium", "Java", "TestNG", "Maven", "Cucumber", "WebDriverManager"],
     bullets: [
       "Framework built using Java, Selenium WebDriver and TestNG with Maven build lifecycle.",
