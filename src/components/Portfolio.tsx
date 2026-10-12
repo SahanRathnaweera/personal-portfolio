@@ -782,6 +782,7 @@ const PROJECTS: Project[] = [
   {
     title: "Restful-Booker API Automation & CI/CD Framework",
     repo: "restful-booker-postman-automation",
+    img: apiImg,
     stack: ["Postman", "JavaScript", "Newman", "GitHub Actions"],
     bullets: [
       "Fully automated API testing framework using Postman and JavaScript.",
