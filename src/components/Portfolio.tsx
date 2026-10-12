@@ -35,6 +35,7 @@ import duothanImg from "@/assets/Duothan.jpeg";
 import technovacImg from "@/assets/Technovac-3.1.jpg";
 import zentroImg from "@/assets/zentro.jpg";
 import blazeDemoImg from "@/assets/blazedemo.jpg";
+import jiraImg from "@/assets/Jira.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
@@ -798,6 +799,7 @@ const PROJECTS: Project[] = [
   {
     title: "Jira Test Management & Agile Defect Lifecycle",
     repo: "Daraz---Test-Management",
+    img: jiraImg,
     stack: ["Jira Cloud", "Agile/Scrum", "Manual Testing", "STLC"],
     bullets: [
       "End-to-end manual test execution and defect lifecycle for core Daraz e-commerce workflows using Jira Cloud.",
