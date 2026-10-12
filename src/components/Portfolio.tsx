@@ -38,6 +38,7 @@ import blazeDemoImg from "@/assets/blazedemo.jpg";
 import jiraImg from "@/assets/Jira.jpg";
 import ecommerceImg from "@/assets/ecommerce-manual.jpg";
 import apiImg from "@/assets/api-testing.jpg";
+import playwrightImg from "@/assets/playwright.jpg";
 // Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
@@ -793,6 +794,7 @@ const PROJECTS: Project[] = [
   {
     title: "Playwright E2E Automation & CI/CD Framework",
     repo: "playwright-saucedemo-e2e",
+    img: playwrightImg,
     stack: ["TypeScript", "Playwright", "POM", "GitHub Actions"],
     bullets: [
       "Scalable, modular E2E framework using the Page Object Model for SauceDemo.",
