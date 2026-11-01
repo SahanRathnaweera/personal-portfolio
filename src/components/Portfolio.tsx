@@ -39,9 +39,11 @@ import jiraImg from "@/assets/Jira.jpg";
 import ecommerceImg from "@/assets/ecommerce-manual.jpg";
 import apiImg from "@/assets/api-testing.jpg";
 import playwrightImg from "@/assets/playwright.jpg";
-// Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
+import tixoraImg from "@/assets/tixora.jpg";
+// Hero & demo videos served from /public so they work on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
+const tixoraDemoUrl = "/tixora-demo.mp4";
 
 
 const ROLES = [
