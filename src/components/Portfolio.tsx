@@ -45,6 +45,26 @@ const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
 const tixoraDemoUrl = "/tixora-demo.mp4";
 
+// Fetch the file same-origin into a Blob so the download carries the preview
+// session (a plain <a href> download can be blocked with "needs authorization").
+const downloadFile = async (url: string, filename: string) => {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const blob = await res.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = objectUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 30_000);
+  } catch {
+    // silently ignore; the plain href still works on the published site
+  }
+};
+
 
 const ROLES = [
   "QA Automation Engineer",
@@ -255,10 +275,10 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="/cv/Sahan_Tharuka_QA_Intern_CV.pdf" download="Sahan_Tharuka_QA_Intern_CV.pdf" className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="/cv/Sahan_Tharuka_QA_Intern_CV.pdf" download="Sahan_Tharuka_QA_Intern_CV.pdf" onClick={(e) => { e.preventDefault(); downloadFile("/cv/Sahan_Tharuka_QA_Intern_CV.pdf", "Sahan_Tharuka_QA_Intern_CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> QA Engineer CV
             </a>
-            <a href="/cv/AI-Assisted-SE-CV.pdf" download className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="/cv/AI-Assisted-SE-CV.pdf" download onClick={(e) => { e.preventDefault(); downloadFile("/cv/AI-Assisted-SE-CV.pdf", "AI-Assisted-SE-CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> AI-Assisted SE CV
             </a>
             <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
