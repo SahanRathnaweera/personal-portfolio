@@ -424,7 +424,7 @@ function About() {
           >
             <div className="box-black rounded-3xl p-8 space-y-5 text-base md:text-lg leading-relaxed">
               <p>
-                I’m a <b className="text-gradient">3rd-year Computer Science undergraduate</b> at <b>NSBM Green University</b> (GPA: 3.68/4.0) with a strong interest in <b className="text-primary">Quality Engineering</b>, <b className="text-primary">Test Automation</b>, and <b className="text-primary">AI-Assisted Software Engineering</b>.
+                I’m a <b className="text-gradient">3rd-year Computer Science undergraduate</b> at <b>NSBM Green University</b> (GPA: 3.633/4.0) with a strong interest in <b className="text-primary">Quality Engineering</b>, <b className="text-primary">Test Automation</b>, and <b className="text-primary">AI-Assisted Software Engineering</b>.
               </p>
               <p className="text-muted-foreground">
                 I enjoy building reliable software and improving its quality through automation, modern development practices, and AI-assisted workflows. My technical experience includes <mark className="bg-primary/20 text-primary px-1.5 rounded">Java</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TypeScript</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Playwright</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Selenium</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">Cucumber</mark>, <mark className="bg-primary/20 text-primary px-1.5 rounded">TestNG</mark>, REST API Testing, Postman, RestAssured, JMeter, Git/GitHub, GitHub Actions, CI/CD, and Docker basics.
