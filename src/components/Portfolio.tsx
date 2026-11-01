@@ -838,6 +838,21 @@ const PROJECTS: Project[] = [
       "Backend REST API with Spring Boot, Spring Data JPA, Spring Security and JWT authentication on a MySQL database.",
     ],
   },
+  {
+    title: "Tixora — Real-Time Event Booking & Verification System",
+    repo: "tixora",
+    img: tixoraImg,
+    demo: tixoraDemoUrl,
+    stack: ["Java 17", "Spring Boot", "Spring Security (JWT)", "PostgreSQL", "React", "TypeScript", "Tailwind CSS"],
+    bullets: [
+      "End-to-end event ticketing platform with a responsive UI and real-time concurrency control.",
+      "Interactive event browsing and real-time seat selection for attendees.",
+      "1-minute temporary seat lock during checkout prevents double-booking; unclaimed holds are auto-released to the pool.",
+      "Secure, unique QR-code ticket generated only after simulated card payment confirmation.",
+      "Fraud-proof staff check-in portal with strict one-time-use QR validation — no duplicate check-ins.",
+      "Token-based authentication with Spring Security & JWT for role-based access.",
+    ],
+  },
 ];
 
 function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
