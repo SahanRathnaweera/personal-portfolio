@@ -39,9 +39,11 @@ import jiraImg from "@/assets/Jira.jpg";
 import ecommerceImg from "@/assets/ecommerce-manual.jpg";
 import apiImg from "@/assets/api-testing.jpg";
 import playwrightImg from "@/assets/playwright.jpg";
-// Hero video served from /public so it works on any static host (Vercel, Lovable, etc.)
+import tixoraImg from "@/assets/tixora.jpg";
+// Hero & demo videos served from /public so they work on any static host (Vercel, Lovable, etc.)
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
+const tixoraDemoUrl = "/tixora-demo.mp4";
 
 
 const ROLES = [
@@ -834,6 +836,21 @@ const PROJECTS: Project[] = [
       "Full-stack clothing e-commerce platform covering Men's, Ladies and Kids fashion.",
       "Frontend built with React, TypeScript, Tailwind CSS and Vite, using React Router.",
       "Backend REST API with Spring Boot, Spring Data JPA, Spring Security and JWT authentication on a MySQL database.",
+    ],
+  },
+  {
+    title: "Tixora — Real-Time Event Booking & Verification System",
+    repo: "tixora",
+    img: tixoraImg,
+    demo: tixoraDemoUrl,
+    stack: ["Java 17", "Spring Boot", "Spring Security (JWT)", "PostgreSQL", "React", "TypeScript", "Tailwind CSS"],
+    bullets: [
+      "End-to-end event ticketing platform with a responsive UI and real-time concurrency control.",
+      "Interactive event browsing and real-time seat selection for attendees.",
+      "1-minute temporary seat lock during checkout prevents double-booking; unclaimed holds are auto-released to the pool.",
+      "Secure, unique QR-code ticket generated only after simulated card payment confirmation.",
+      "Fraud-proof staff check-in portal with strict one-time-use QR validation — no duplicate check-ins.",
+      "Token-based authentication with Spring Security & JWT for role-based access.",
     ],
   },
 ];
