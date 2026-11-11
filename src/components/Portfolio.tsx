@@ -50,7 +50,7 @@ const tixoraDemoUrl = "/tixora-demo.mp4";
 const downloadFile = async (url: string, filename: string) => {
   try {
     const res = await fetch(url);
-    if (!res.ok) return;
+    if (!res.ok) throw new Error(String(res.status));
     const blob = await res.blob();
     const objectUrl = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -61,7 +61,8 @@ const downloadFile = async (url: string, filename: string) => {
     a.remove();
     setTimeout(() => URL.revokeObjectURL(objectUrl), 30_000);
   } catch {
-    // silently ignore; the plain href still works on the published site
+    // Fallback: open the file directly so it still reaches the visitor.
+    window.open(url, "_blank", "noopener");
   }
 };
 
@@ -275,7 +276,7 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="/cv/Sahan_Tharuka_QA_Intern_CV.pdf" download="Sahan_Tharuka_QA_Intern_CV.pdf" onClick={(e) => { e.preventDefault(); downloadFile("/cv/Sahan_Tharuka_QA_Intern_CV.pdf", "Sahan_Tharuka_QA_Intern_CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href="/cv/Sahan_Tharuka_QA_CV.pdf" download="Sahan_Tharuka_QA_CV.pdf" onClick={(e) => { e.preventDefault(); downloadFile("/cv/Sahan_Tharuka_QA_CV.pdf", "Sahan_Tharuka_QA_CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> QA Engineer CV
             </a>
             <a href="/cv/AI-Assisted-SE-CV.pdf" download onClick={(e) => { e.preventDefault(); downloadFile("/cv/AI-Assisted-SE-CV.pdf", "AI-Assisted-SE-CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
