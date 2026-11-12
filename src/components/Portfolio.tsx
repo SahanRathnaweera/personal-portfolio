@@ -1,3 +1,30 @@
+import { MotionConfig, useReducedMotion } from "framer-motion";
+import { ProjectDemo } from "@/components/ProjectDemo";
+import { Button } from "@/components/ui/button";
+import { SkillLogo } from "@/components/SkillLogo";
+import { CVS, readPdf, contactUrl } from "@/lib/portfolio-actions";
+import skillAsset0 from "@/assets/skill-java-original.svg.asset.json";
+import skillAsset1 from "@/assets/skill-mysql-original.svg.asset.json";
+import skillAsset2 from "@/assets/skill-playwright-original.svg.asset.json";
+import skillAsset3 from "@/assets/skill-apachejmeter.svg.asset.json";
+import skillAsset4 from "@/assets/skill-cucumber.svg.asset.json";
+import skillAsset5 from "@/assets/skill-express-FFFFFF.svg.asset.json";
+import skillAsset6 from "@/assets/skill-githubactions.svg.asset.json";
+import skillAsset7 from "@/assets/skill-html5.svg.asset.json";
+import skillAsset8 from "@/assets/skill-intellijidea.svg.asset.json";
+import skillAsset9 from "@/assets/skill-jira.svg.asset.json";
+import skillAsset10 from "@/assets/skill-junit5.svg.asset.json";
+import skillAsset11 from "@/assets/skill-mongodb.svg.asset.json";
+import skillAsset12 from "@/assets/skill-mysql.svg.asset.json";
+import skillAsset13 from "@/assets/skill-nextdotjs-FFFFFF.svg.asset.json";
+import skillAsset14 from "@/assets/skill-postgresql.svg.asset.json";
+import skillAsset15 from "@/assets/skill-postman.svg.asset.json";
+import skillAsset16 from "@/assets/skill-react.svg.asset.json";
+import skillAsset17 from "@/assets/skill-selenium.svg.asset.json";
+import skillAsset18 from "@/assets/skill-tailwindcss.svg.asset.json";
+import skillAsset19 from "@/assets/skill-typescript.svg.asset.json";
+import skillAsset20 from "@/assets/skill-vercel-FFFFFF.svg.asset.json";
+import skillAsset21 from "@/assets/skill-vite.svg.asset.json";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import {
@@ -51,7 +78,7 @@ const downloadFile = async (url: string, filename: string) => {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(String(res.status));
-    const blob = await res.blob();
+    const blob = await readPdf(res);
     const objectUrl = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = objectUrl;
@@ -86,11 +113,12 @@ function useTyping(words: string[], speed = 90, pause = 1600) {
   const [del, setDel] = useState(false);
   useEffect(() => {
     const w = words[i];
+    if (!w) return;
     const t = setTimeout(
       () => {
         if (!del) {
           setText(w.slice(0, text.length + 1));
-          if (text === w) setTimeout(() => setDel(true), pause);
+          if (text === w) setDel(true);
         } else {
           setText(w.slice(0, text.length - 1));
           if (text === "") {
@@ -99,7 +127,7 @@ function useTyping(words: string[], speed = 90, pause = 1600) {
           }
         }
       },
-      del ? 35 : speed + Math.random() * 40
+      !del && text === w ? pause : del ? 35 : speed
     );
     return () => clearTimeout(t);
   }, [text, del, i, words, speed, pause]);
@@ -121,7 +149,7 @@ function Nav() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-black/95 border border-white/10 rounded-full px-3 py-2 shadow-3d hidden md:flex items-center gap-1"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 box-black rounded-full px-3 py-2 shadow-3d hidden lg:flex items-center gap-1 whitespace-nowrap"
     >
       <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
         Sahan Tharuka
@@ -132,7 +160,7 @@ function Nav() {
           href={h}
           whileHover={{ y: -4, scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300, damping: 18 }}
-          className="px-4 py-1.5 text-sm text-white hover:text-primary transition-colors rounded-full hover:bg-white/5"
+          className="px-2 py-1.5 text-sm text-card-foreground hover:text-primary transition-colors rounded-full"
         >
           {n}
         </motion.a>
@@ -147,7 +175,7 @@ function AvailableBadge() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.4 }}
-      className="fixed top-6 left-6 z-40 box-black rounded-full px-4 py-2 hidden md:flex items-center gap-2 shadow-glow"
+      className="fixed bottom-6 left-6 z-40 box-black rounded-full px-4 py-2 hidden md:flex items-center gap-2 shadow-glow"
     >
       <span className="relative flex h-2.5 w-2.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
@@ -159,6 +187,22 @@ function AvailableBadge() {
 }
 
 function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let visible = true;
+    const sync = () => {
+      if (!visible || document.hidden || reducedMotion) video.pause();
+      else void video.play().catch(() => {});
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = Boolean(entry?.isIntersecting); sync(); });
+    observer.observe(video);
+    document.addEventListener("visibilitychange", sync);
+    sync();
+    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", sync); video.pause(); };
+  }, [reducedMotion]);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
@@ -169,12 +213,13 @@ function HeroVideo() {
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div style={{ y, scale, opacity }} className="absolute inset-0 will-change-transform">
         <video
+          ref={videoRef}
           className="w-full h-full object-cover object-center opacity-[0.34] contrast-125 saturate-[0.9] scale-[1.35] md:scale-[1.25]"
-          autoPlay
+          autoPlay={!reducedMotion}
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           disablePictureInPicture
           src={heroVideoUrl}
         />
@@ -196,7 +241,9 @@ function HeroVideo() {
 }
 
 function Hero() {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const reducedMotion = useReducedMotion();
   const typed = useTyping(ROLES);
   return (
     <section
@@ -204,9 +251,10 @@ function Hero() {
       onMouseMove={(e) => {
         const x = (e.clientX / window.innerWidth - 0.5) * 2;
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
-        setTilt({ x, y });
+        if (reducedMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+        rx.set(-y * 2.2); ry.set(x * 2.6);
       }}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      onMouseLeave={() => { rx.set(0); ry.set(0); }}
       className="relative min-h-[100svh] flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden"
     >
       <HeroVideo />
@@ -220,8 +268,7 @@ function Hero() {
 
       <motion.div
         style={{
-          transform: `perspective(1400px) rotateX(${-tilt.y * 2.2}deg) rotateY(${tilt.x * 2.6}deg) translateZ(0)`,
-          transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
+          rotateX: rx, rotateY: ry, transformPerspective: 1400,
         }}
         className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center w-full"
       >
@@ -276,10 +323,10 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href="/cv/Sahan_Tharuka_QA_CV.pdf" download="Sahan_Tharuka_QA_CV.pdf" onClick={(e) => { e.preventDefault(); downloadFile("/cv/Sahan_Tharuka_QA_CV.pdf", "Sahan_Tharuka_QA_CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href={CVS.qa.url} download={CVS.qa.filename} onClick={(e) => { e.preventDefault(); downloadFile(CVS.qa.url, CVS.qa.filename); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> QA Engineer CV
             </a>
-            <a href="/cv/Sahan_Tharuka_SE-CV.pdf" download="Sahan_Tharuka_SE-CV.pdf" onClick={(e) => { e.preventDefault(); downloadFile("/cv/Sahan_Tharuka_SE-CV.pdf", "Sahan_Tharuka_SE-CV.pdf"); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
+            <a href={CVS.se.url} download={CVS.se.filename} onClick={(e) => { e.preventDefault(); downloadFile(CVS.se.url, CVS.se.filename); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
               <Download className="w-4 h-4" /> AI-Assisted SE CV
             </a>
             <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
@@ -296,13 +343,13 @@ function Hero() {
             transition={{ delay: 0.7 }}
             className="flex gap-4 mt-8"
           >
-            <a href={GITHUB} target="_blank" rel="noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={GITHUB} aria-label="GitHub" target="_blank" rel="noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={LINKEDIN} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href={`mailto:${EMAIL}`} className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
+            <a href={`mailto:${EMAIL}`} aria-label="Email" className="box-black p-3 rounded-full hover:scale-110 hover:text-primary transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>
@@ -337,7 +384,9 @@ function Card3D() {
     <div
       ref={ref}
       onMouseMove={(e) => {
-        const r = ref.current!.getBoundingClientRect();
+        const element = ref.current;
+        if (!element) return;
+        const r = element.getBoundingClientRect();
         const x = (e.clientX - r.left - r.width / 2) / r.width;
         const y = (e.clientY - r.top - r.height / 2) / r.height;
         setTilt({ x: -y * 18, y: x * 18 });
@@ -380,6 +429,10 @@ function Card3D() {
         <img
           src={profileImg}
           alt="Sahan Tharuka"
+          fetchPriority="high"
+          decoding="async"
+          width={420}
+          height={420}
           className="w-full h-full object-cover object-[center_18%] transition-transform duration-700 ease-out group-hover:scale-105"
         />
         {/* Professional vignette overlay */}
@@ -557,45 +610,45 @@ function Experience() {
 }
 
 const SKILLS_AUTO = [
-  { n: "Selenium WebDriver", logo: "https://cdn.simpleicons.org/selenium" },
-  { n: "Playwright", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" },
-  { n: "Postman & Newman", logo: "https://cdn.simpleicons.org/postman" },
-  { n: "JUnit", logo: "https://cdn.simpleicons.org/junit5" },
+  { n: "Selenium WebDriver", logo: skillAsset17.url },
+  { n: "Playwright", logo: skillAsset2.url },
+  { n: "Postman & Newman", logo: skillAsset15.url },
+  { n: "JUnit", logo: skillAsset10.url },
   { n: "TestNG", icon: "testng" },
   { n: "REST Assured", icon: "rest" },
-  { n: "Cucumber BDD", logo: "https://cdn.simpleicons.org/cucumber" },
-  { n: "JMeter", logo: "https://cdn.simpleicons.org/apachejmeter" },
-  { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
+  { n: "Cucumber BDD", logo: skillAsset4.url },
+  { n: "JMeter", logo: skillAsset3.url },
+  { n: "GitHub Actions", logo: skillAsset6.url },
 ];
 const SKILLS_LANG = [
-  { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
-  { n: "SQL", logo: "https://cdn.simpleicons.org/mysql" },
-  { n: "Gherkin", logo: "https://cdn.simpleicons.org/cucumber" },
-  { n: "HTML / CSS", logo: "https://cdn.simpleicons.org/html5" },
+  { n: "Java", logo: skillAsset0.url },
+  { n: "TypeScript", logo: skillAsset19.url },
+  { n: "SQL", logo: skillAsset12.url },
+  { n: "Gherkin", logo: skillAsset4.url },
+  { n: "HTML / CSS", logo: skillAsset7.url },
 ];
 const SKILLS_TECH = [
-  { n: "Selenium", logo: "https://cdn.simpleicons.org/selenium" },
-  { n: "Playwright", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" },
-  { n: "JMeter", logo: "https://cdn.simpleicons.org/apachejmeter" },
-  { n: "Cucumber", logo: "https://cdn.simpleicons.org/cucumber" },
-  { n: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { n: "Postman", logo: "https://cdn.simpleicons.org/postman" },
+  { n: "Selenium", logo: skillAsset17.url },
+  { n: "Playwright", logo: skillAsset2.url },
+  { n: "JMeter", logo: skillAsset3.url },
+  { n: "Cucumber", logo: skillAsset4.url },
+  { n: "Java", logo: skillAsset0.url },
+  { n: "Postman", logo: skillAsset15.url },
   { n: "REST Assured", icon: "rest" },
   { n: "TestNG", icon: "testng" },
-  { n: "Jira", logo: "https://cdn.simpleicons.org/jira" },
-  { n: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
-  { n: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-  { n: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
-  { n: "IntelliJ IDEA", logo: "https://cdn.simpleicons.org/intellijidea" },
-  { n: "React", logo: "https://cdn.simpleicons.org/react" },
-  { n: "Vite", logo: "https://cdn.simpleicons.org/vite" },
-  { n: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
-  { n: "Vercel", logo: "https://cdn.simpleicons.org/vercel/FFFFFF" },
-  { n: "TailwindCSS", logo: "https://cdn.simpleicons.org/tailwindcss" },
-  { n: "MongoDB", logo: "https://cdn.simpleicons.org/mongodb" },
-  { n: "Express.js", logo: "https://cdn.simpleicons.org/express/FFFFFF" },
-  { n: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/FFFFFF" },
+  { n: "Jira", logo: skillAsset9.url },
+  { n: "GitHub Actions", logo: skillAsset6.url },
+  { n: "MySQL", logo: skillAsset1.url },
+  { n: "TypeScript", logo: skillAsset19.url },
+  { n: "IntelliJ IDEA", logo: skillAsset8.url },
+  { n: "React", logo: skillAsset16.url },
+  { n: "Vite", logo: skillAsset21.url },
+  { n: "PostgreSQL", logo: skillAsset14.url },
+  { n: "Vercel", logo: skillAsset20.url },
+  { n: "TailwindCSS", logo: skillAsset18.url },
+  { n: "MongoDB", logo: skillAsset11.url },
+  { n: "Express.js", logo: skillAsset5.url },
+  { n: "Next.js", logo: skillAsset13.url },
 ];
 
 
@@ -610,7 +663,9 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
       viewport={{ once: true }}
       transition={{ delay: i * 0.05, type: "spring", stiffness: 180, damping: 18 }}
       onMouseMove={(e) => {
-        const r = ref.current!.getBoundingClientRect();
+        const element = ref.current;
+        if (!element) return;
+        const r = element.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
         setTilt({ x, y });
@@ -627,10 +682,9 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
         style={{ transform: "translateZ(24px)" }}
       >
         {s.logo ? (
-          <img
+          <SkillLogo
             src={s.logo}
             alt={s.n}
-            loading="lazy"
             className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
           />
         ) : s.icon === "testng" ? (
@@ -672,7 +726,7 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
         style={{ transform: "translateZ(26px)" }}
       >
         {s.logo ? (
-          <img src={s.logo} alt={s.n} loading="lazy" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
+          <SkillLogo src={s.logo} alt={s.n} className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
         ) : s.icon === "testng" ? (
           <FlaskConical className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
         ) : (
@@ -943,13 +997,13 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
           </div>
           <div className="mt-auto flex flex-col sm:flex-row gap-2.5">
             {p.demo && (
-              <button
+              <Button
                 type="button"
                 onClick={() => setDemoOpen(true)}
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground hover:scale-[1.03] transition-transform duration-300 shadow-glow"
               >
                 <Zap className="w-4 h-4" /> View Demo
-              </button>
+              </Button>
             )}
             <a
               href={`${GITHUB}/${p.repo}`}
@@ -962,47 +1016,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
           </div>
         </div>
       </motion.div>
-      <AnimatePresence>
-        {demoOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setDemoOpen(false)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: "spring", stiffness: 220, damping: 24 }}
-              onClick={(e) => e.stopPropagation()}
-              className="box-black rounded-3xl w-full max-w-4xl overflow-hidden"
-            >
-              <div className="flex items-center justify-between px-5 py-3 border-b border-primary/20">
-                <div className="text-sm font-semibold text-primary truncate">{p.title} — Live Demo</div>
-                <button
-                  type="button"
-                  onClick={() => setDemoOpen(false)}
-                  aria-label="Close demo"
-                  className="shrink-0 ml-3 w-8 h-8 rounded-full border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
-                >
-                  ✕
-                </button>
-              </div>
-              <video
-                src={p.demo}
-                controls
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full aspect-video bg-black"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {p.demo && <ProjectDemo open={demoOpen} onOpenChange={setDemoOpen} title={p.title} src={p.demo} />}
     </Reveal>
   );
 }
@@ -1222,21 +1236,20 @@ function Contact() {
                 const email = f.get("email");
                 const subject = f.get("subject") || "Portfolio Contact";
                 const message = f.get("message");
-                const body = `From: ${name} <${email}>%0D%0A%0D%0A${message}`;
-                window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(String(subject))}&body=${body}`;
+                window.location.href = contactUrl(EMAIL, String(name ?? ""), String(email ?? ""), String(subject), String(message ?? ""));
                 setSent(true);
               }}
               className="box-black rounded-3xl p-8 space-y-4"
             >
               <div className="grid sm:grid-cols-2 gap-4">
-                <input required name="name" placeholder="Your name" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
-                <input required type="email" name="email" placeholder="Your email" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
+                <input required name="name" aria-label="Your name" autoComplete="name" placeholder="Your name" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
+                <input required type="email" name="email" aria-label="Your email" autoComplete="email" placeholder="Your email" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
               </div>
-              <input name="subject" placeholder="Subject" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
-              <textarea required name="message" rows={6} placeholder="Your message…" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition resize-none" />
-              <button type="submit" className="w-full bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3.5 rounded-xl font-bold shadow-glow hover:scale-[1.02] transition flex items-center justify-center gap-2">
+              <input name="subject" aria-label="Subject" placeholder="Subject" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition" />
+              <textarea required name="message" aria-label="Your message" rows={6} placeholder="Your message…" className="w-full bg-input/50 border border-border rounded-xl px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition resize-none" />
+              <Button type="submit" className="w-full bg-gradient-hero animate-gradient text-primary-foreground px-6 py-3.5 rounded-xl font-bold shadow-glow hover:scale-[1.02] transition flex items-center justify-center gap-2">
                 <Send className="w-4 h-4" /> Send Message
-              </button>
+              </Button>
               <AnimatePresence>
                 {sent && (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="text-sm text-accent text-center">
@@ -1356,6 +1369,7 @@ function ScrollTop() {
 
 export default function Portfolio() {
   return (
+    <MotionConfig reducedMotion="user">
     <div className="relative min-h-screen w-full max-w-full overflow-x-clip">
       <QABackground />
       <Nav />
@@ -1372,6 +1386,7 @@ export default function Portfolio() {
       <Footer />
       <ScrollTop />
     </div>
+    </MotionConfig>
   );
 }
 
