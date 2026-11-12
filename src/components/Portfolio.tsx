@@ -1,6 +1,7 @@
 import { MotionConfig, useReducedMotion } from "framer-motion";
 import { ProjectDemo } from "@/components/ProjectDemo";
 import { Button } from "@/components/ui/button";
+import { SkillLogo } from "@/components/SkillLogo";
 import { CVS, readPdf, contactUrl } from "@/lib/portfolio-actions";
 import skillAsset0 from "@/assets/skill-java-original.svg.asset.json";
 import skillAsset1 from "@/assets/skill-mysql-original.svg.asset.json";
@@ -148,7 +149,7 @@ function Nav() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 box-black rounded-full px-3 py-2 shadow-3d hidden xl:flex items-center gap-1 whitespace-nowrap"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 box-black rounded-full px-3 py-2 shadow-3d hidden lg:flex items-center gap-1 whitespace-nowrap"
     >
       <a href="#hero" className="px-4 py-1.5 text-sm font-semibold text-primary">
         Sahan Tharuka
@@ -159,7 +160,7 @@ function Nav() {
           href={h}
           whileHover={{ y: -4, scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300, damping: 18 }}
-          className="px-4 py-1.5 text-sm text-white hover:text-primary transition-colors rounded-full hover:bg-white/5"
+          className="px-2 py-1.5 text-sm text-card-foreground hover:text-primary transition-colors rounded-full"
         >
           {n}
         </motion.a>
@@ -681,10 +682,9 @@ function LogoTile({ s, i, small = false }: { s: { n: string; logo?: string; icon
         style={{ transform: "translateZ(24px)" }}
       >
         {s.logo ? (
-          <img
+          <SkillLogo
             src={s.logo}
             alt={s.n}
-            loading="lazy"
             className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
           />
         ) : s.icon === "testng" ? (
@@ -726,7 +726,7 @@ function MarqueeTile({ s, small = false }: { s: SkillItem; small?: boolean }) {
         style={{ transform: "translateZ(26px)" }}
       >
         {s.logo ? (
-          <img src={s.logo} alt={s.n} loading="lazy" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
+          <SkillLogo src={s.logo} alt={s.n} className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]" />
         ) : s.icon === "testng" ? (
           <FlaskConical className={`${small ? "w-6 h-6" : "w-8 h-8"} text-primary`} />
         ) : (
