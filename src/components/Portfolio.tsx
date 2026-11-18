@@ -2,7 +2,8 @@ import { MotionConfig, useReducedMotion } from "framer-motion";
 import { ProjectDemo } from "@/components/ProjectDemo";
 import { Button } from "@/components/ui/button";
 import { SkillLogo } from "@/components/SkillLogo";
-import { CVS, readPdf, contactUrl } from "@/lib/portfolio-actions";
+import { CVS, contactUrl } from "@/lib/portfolio-actions";
+import { CvDownload } from "@/components/CvDownload";
 import skillAsset0 from "@/assets/skill-java-original.svg.asset.json";
 import skillAsset1 from "@/assets/skill-mysql-original.svg.asset.json";
 import skillAsset2 from "@/assets/skill-playwright-original.svg.asset.json";
@@ -32,7 +33,6 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Download,
   ExternalLink,
   ArrowUpRight,
   ArrowUp,
@@ -71,28 +71,6 @@ import tixoraImg from "@/assets/tixora.jpg";
 const heroVideoUrl = "/hero-bg.mp4";
 const zentroDemoUrl = "/zentro-demo.mp4";
 const tixoraDemoUrl = "/tixora-demo.mp4";
-
-// Fetch the file same-origin into a Blob so the download carries the preview
-// session (a plain <a href> download can be blocked with "needs authorization").
-const downloadFile = async (url: string, filename: string) => {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(String(res.status));
-    const blob = await readPdf(res);
-    const objectUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = objectUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(objectUrl), 30_000);
-  } catch {
-    // Fallback: open the file directly so it still reaches the visitor.
-    window.open(url, "_blank", "noopener");
-  }
-};
-
 
 const ROLES = [
   "QA Automation Engineer",
@@ -323,12 +301,8 @@ function Hero() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-3"
           >
-            <a href={CVS.qa.url} download={CVS.qa.filename} onClick={(e) => { e.preventDefault(); downloadFile(CVS.qa.url, CVS.qa.filename); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
-              <Download className="w-4 h-4" /> QA Engineer CV
-            </a>
-            <a href={CVS.se.url} download={CVS.se.filename} onClick={(e) => { e.preventDefault(); downloadFile(CVS.se.url, CVS.se.filename); }} className="group bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold shadow-glow hover:scale-105 transition-transform inline-flex items-center gap-2">
-              <Download className="w-4 h-4" /> AI-Assisted SE CV
-            </a>
+            <CvDownload {...CVS.qa} label="QA Engineer CV" />
+            <CvDownload {...CVS.se} label="AI-Assisted SE CV" />
             <a href="#projects" className="box-black px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
               <Rocket className="w-4 h-4 text-primary" /> View Projects
             </a>
